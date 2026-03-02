@@ -4,8 +4,8 @@ services:
     container_name: planteller-web
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+    - "127.0.0.1:8081:80"
+
     environment:
       - EMAIL=${EMAIL}
     volumes:
