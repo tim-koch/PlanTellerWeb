@@ -11,6 +11,14 @@ www.planteller.de {
 
   root * /srv/site
 
+  redir /index / 301
+  redir /index.html / 301
+
+  @html path_regexp html ^/(.+)\.html$
+  redir @html /{re.html.1} 301
+
+  try_files {path} {path}.html /index /index.html
+
   # Hide internal files/folders from static serving.
   file_server {
     hide .git
