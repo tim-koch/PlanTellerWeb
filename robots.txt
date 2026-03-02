@@ -1,4 +1,5 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://planteller.app/sitemap.xml
+Sitemap: https://www.planteller.de/sitemap.xml
+

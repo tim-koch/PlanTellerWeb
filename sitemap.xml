@@ -1,39 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://planteller.app/</loc>
+    <loc>https://www.planteller.de/</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://planteller.app/agb.html</loc>
+    <loc>https://www.planteller.de/agb.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://planteller.app/datenschutz.html</loc>
+    <loc>https://www.planteller.de/datenschutz.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://planteller.app/impressum.html</loc>
+    <loc>https://www.planteller.de/impressum.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://planteller.app/ki-hinweise.html</loc>
+    <loc>https://www.planteller.de/ki-hinweise.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://planteller.app/hinweise-disclaimer.html</loc>
+    <loc>https://www.planteller.de/hinweise-disclaimer.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
+
