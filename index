@@ -39,7 +39,7 @@
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="index.html"><img class="brand-mark" src="assets/images/logo.png" alt="PlanTeller Logo" width="512" height="512" decoding="async"><span class="logo">PlanTeller</span></a>
+      <a class="brand" href="/"><img class="brand-mark" src="assets/images/logo.png" alt="PlanTeller Logo" width="512" height="512" decoding="async"><span class="logo">PlanTeller</span></a>
       <input class="nav-check" type="checkbox" id="nav-toggle">
       <label class="nav-toggle" for="nav-toggle" aria-label="Navigation umschalten">
         <span></span>
@@ -210,11 +210,12 @@
         <h2>Rechtliches</h2>
         <p class="section-lead">Alle wichtigen Seiten für App-Store und Web-Präsenz an einem Ort.</p>
         <div class="legal-grid">
-          <a class="legal-link" href="datenschutz.html">Datenschutzerklärung <span>></span></a>
-          <a class="legal-link" href="agb.html">AGB <span>></span></a>
-          <a class="legal-link" href="impressum.html">Impressum <span>></span></a>
-          <a class="legal-link" href="ki-hinweise.html">KI-Hinweise & Transparenz <span>></span></a>
-          <a class="legal-link" href="hinweise-disclaimer.html">Hinweise & Disclaimer <span>></span></a>
+          <a class="legal-link" href="datenschutz">Datenschutzerklärung <span>></span></a>
+          <a class="legal-link" href="agb">AGB <span>></span></a>
+          <a class="legal-link" href="impressum">Impressum <span>></span></a>
+          <a class="legal-link" href="ki-hinweise">KI-Hinweise & Transparenz <span>></span></a>
+          <a class="legal-link" href="hinweise-disclaimer">Hinweise & Disclaimer <span>></span></a>
+          <a class="legal-link" href="konto-loeschen">Konto löschen <span>></span></a>
         </div>
       </div>
     </section>

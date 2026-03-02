@@ -7,31 +7,37 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.planteller.de/agb.html</loc>
+    <loc>https://www.planteller.de/agb</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.planteller.de/datenschutz.html</loc>
+    <loc>https://www.planteller.de/datenschutz</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.planteller.de/impressum.html</loc>
+    <loc>https://www.planteller.de/impressum</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.planteller.de/ki-hinweise.html</loc>
+    <loc>https://www.planteller.de/ki-hinweise</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.planteller.de/hinweise-disclaimer.html</loc>
+    <loc>https://www.planteller.de/hinweise-disclaimer</loc>
+    <lastmod>2026-03-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.planteller.de/konto-loeschen</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
