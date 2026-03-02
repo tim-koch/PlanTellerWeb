@@ -2,11 +2,11 @@
   email {$EMAIL}
 }
 
-planteller.de {
+http://planteller.de {
   redir https://www.planteller.de{uri} permanent
 }
 
-www.planteller.de {
+http://www.planteller.de {
   encode zstd gzip
 
   root * /srv/site
