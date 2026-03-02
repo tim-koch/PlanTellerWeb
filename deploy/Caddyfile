@@ -17,7 +17,7 @@ www.planteller.de {
   @html path_regexp html ^/(.+)\.html$
   redir @html /{re.html.1} 301
 
-  try_files {path} {path}.html /index /index.html
+  try_files {path}.html {path} /index.html /index
 
   # Hide internal files/folders from static serving.
   file_server {
