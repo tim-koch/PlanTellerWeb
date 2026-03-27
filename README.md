@@ -9,6 +9,7 @@ Statische Landingpage mit Rechtsseiten für die PlanTeller-App.
 - `impressum.html`: Impressum
 - `ki-hinweise.html`: KI-Hinweise und Transparenz
 - `hinweise-disclaimer.html`: Hinweise und Disclaimer
+- `recipe-share.html`: Landingpage für Rezept-Freigabelinks
 - `robots.txt`: Crawling-Regeln
 - `sitemap.xml`: Sitemap für Suchmaschinen
 

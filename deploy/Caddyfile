@@ -2,11 +2,20 @@
   email {$EMAIL}
 }
 
-http://planteller.de {
+planteller.de {
+  encode zstd gzip
+
+  root * /srv/site
+
+  @assetlinks path /.well-known/assetlinks.json
+  handle @assetlinks {
+    file_server
+  }
+
   redir https://www.planteller.de{uri} permanent
 }
 
-http://www.planteller.de {
+www.planteller.de {
   encode zstd gzip
 
   root * /srv/site
