@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20260327b">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,11 +61,21 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
+          <a class="play-badge reveal" href="#cta" aria-label="Aktuell nur im Google Play Store verfügbar. Zur Beta-Anmeldung springen.">
+            <img
+              src="/assets/images/google-play-preregister-badge.png"
+              alt="PRE-REGISTER ON Google Play"
+              width="1800"
+              height="560"
+              style="width:440px;max-width:140vw;height:auto;display:block;"
+              decoding="async"
+            >
+          </a>
           <h1 class="reveal">Plan deine Woche. Koche entspannter.</h1>
-          <p class="reveal delay-1">PlanTeller verbindet Rezeptverwaltung, Wochenplanung und synchronisierte Einkaufslisten in einer App. Alles ist in deinem Haushalt synchronisiert - ideal für Familien, Paare und WGs.</p>
+          <p class="reveal delay-1">PlanTeller verbindet Rezeptverwaltung, Wochenplanung und synchronisierte Einkaufslisten in einer App. Alles ist in deinem Haushalt synchronisiert - ideal für Familien, Paare und WGs. Die App ist aktuell in der Beta, deshalb lohnt sich die Bewerbung jetzt besonders.</p>
           <div class="hero-actions reveal delay-2">
             <a class="btn btn-primary" href="#impressions">App ansehen</a>
-            <a class="btn btn-secondary" href="#cta">Jetzt testen</a>
+            <a class="btn btn-secondary" href="#cta">Für Beta bewerben</a>
           </div>
         </div>
         <div class="phone-card reveal delay-3">
@@ -157,21 +167,21 @@
 
     <section id="roadmap" class="section">
       <div class="container">
-        <span class="kicker">Coming Soon</span>
+        <span class="kicker">Live + In Entwicklung</span>
         <h2>Aktive Weiterentwicklung</h2>
-        <p class="section-lead">PlanTeller wird laufend verbessert. Diese Themen stehen als Nächstes im Fokus.</p>
+        <p class="section-lead">PlanTeller entwickelt sich laufend weiter. Einige Features sind bereits live, andere werden mit jeder Version präziser.</p>
         <div class="roadmap-grid">
           <article class="roadmap-card">
-            <h3>Sammlungen</h3>
-            <p>Rezept- und Menübücher thematisch sammeln und organisieren.</p>
+            <h3>Sortierte Einkaufsliste ist live</h3>
+            <p>Die Einkaufsliste ist bereits sortiert nutzbar. Aktuell gibt es 25 + 1 Regale, die pro Supermarkt individuell angepasst und in der Reihenfolge frei sortiert werden können.</p>
           </article>
           <article class="roadmap-card">
-            <h3>Koch-Assistenten</h3>
-            <p>Mehr Hilfestellung beim Kochen: bessere Reihenfolge, klarere Schritte, weniger Rückfragen.</p>
+            <h3>Makro- und Nährwertberechnung</h3>
+            <p>Dieses Modul steht noch am Anfang und wird kontinuierlich ausgebaut. Die Angaben sind nicht medizinisch exakt, sondern als Alltagshilfe für eine grobe Orientierung gedacht.</p>
           </article>
           <article class="roadmap-card">
-            <h3>Sortierte Einkaufsliste</h3>
-            <p>Wir träumen von einer Einkaufsliste, die automatisch nach dem Einkaufsort sortiert wird – z. B. nach Regal oder Abteilung im Supermarkt.</p>
+            <h3>Beta-Feedback als Treiber</h3>
+            <p>Viele Verbesserungen kommen direkt aus Beta-Rückmeldungen. Wer früh dabei ist, beeinflusst Prioritäten und Produktdetails unmittelbar mit.</p>
           </article>
         </div>
       </div>
@@ -180,14 +190,28 @@
     <section id="impressions" class="section">
       <div class="container">
         <h2>Impressionen</h2>
-        <p class="section-lead">So sieht moderne Essensplanung aus: Rezepte sammeln, KI nutzen, Woche planen und gemeinsam einkaufen – alles in einer App, alles synchronisiert.</p>
-        <div class="gallery">
-          <figure class="gallery-item"><img src="/assets/images/impression-1.png" alt="PlanTeller Rezeptliste in hellem Design" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-          <figure class="gallery-item"><img src="/assets/images/impression-2.png" alt="PlanTeller Sammlungen Ansicht" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-          <figure class="gallery-item"><img src="/assets/images/impression-3.png" alt="PlanTeller Einkaufsliste in hell und dunkel" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-          <figure class="gallery-item"><img src="/assets/images/impression-6.png" alt="PlanTeller weitere App Impression" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-          <figure class="gallery-item"><img src="/assets/images/impression-4.png" alt="PlanTeller App Impression vier" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-          <figure class="gallery-item"><img src="/assets/images/impression-5.png" alt="PlanTeller App Impression fünf" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+        <p class="section-lead">Einblicke in die wichtigsten App-Ansichten.</p>
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn" type="button" data-prev aria-label="Vorheriges Bild">‹</button>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track" data-track>
+              <figure class="carousel-item is-active"><img src="/assets/images/impression-1.png" alt="PlanTeller Rezeptliste in hellem Design" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+              <figure class="carousel-item" hidden><img src="/assets/images/impression-2.png" alt="PlanTeller Sammlungen Ansicht" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+              <figure class="carousel-item" hidden><img src="/assets/images/impression-3.png" alt="PlanTeller Einkaufsliste in hell und dunkel" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+              <figure class="carousel-item" hidden><img src="/assets/images/impression-6.png" alt="PlanTeller weitere App Impression" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+              <figure class="carousel-item" hidden><img src="/assets/images/impression-4.png" alt="PlanTeller App Impression vier" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+              <figure class="carousel-item" hidden><img src="/assets/images/impression-5.png" alt="PlanTeller App Impression fünf" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+            </div>
+          </div>
+          <button class="carousel-btn" type="button" data-next aria-label="Nächstes Bild">›</button>
+        </div>
+        <div class="carousel-dots" data-dots>
+          <button class="is-active" type="button" aria-label="Bild 1"></button>
+          <button type="button" aria-label="Bild 2"></button>
+          <button type="button" aria-label="Bild 3"></button>
+          <button type="button" aria-label="Bild 4"></button>
+          <button type="button" aria-label="Bild 5"></button>
+          <button type="button" aria-label="Bild 6"></button>
         </div>
       </div>
     </section>
@@ -195,10 +219,10 @@
     <section id="cta" class="section">
       <div class="container">
         <div class="cta-band">
-          <h3>Jetzt testen oder in die Beta eintragen</h3>
-          <p>PlanTeller ist primär als Android-App verfügbar. Wenn du frühen Zugriff möchtest, melde dich direkt per E-Mail.</p>
+          <h3>Jetzt für die Beta bewerben</h3>
+          <p>PlanTeller ist aktuell primär über Google verfügbar und befindet sich aktiv in der Beta. Bewirb dich jetzt, wenn du früh Zugriff möchtest und die Weiterentwicklung mitprägen willst.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:kochbuch_app@outlook.de?subject=PlanTeller%20Beta%20Anfrage">In die Beta eintragen</a>
+            <a class="btn btn-primary" href="mailto:kochbuch_app@outlook.de?subject=PlanTeller%20Beta%20Anfrage">Google Beta anfragen</a>
             <a class="btn btn-secondary" href="#legal">Impressum & Datenschutz</a>
           </div>
         </div>
@@ -227,6 +251,57 @@
       <span>Kontakt: kochbuch_app@outlook.de</span>
     </div>
   </footer>
+  <script>
+    (function () {
+      const carousel = document.querySelector("[data-carousel]");
+      if (!carousel) return;
+      const track = carousel.querySelector("[data-track]");
+      const slides = Array.from(track.querySelectorAll(".carousel-item"));
+      const prev = carousel.querySelector("[data-prev]");
+      const next = carousel.querySelector("[data-next]");
+      const dotsWrap = document.querySelector("[data-dots]");
+      const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll("button")) : [];
+      let index = 0;
+      let timer = null;
+
+      function setActive(nextIndex) {
+        index = (nextIndex + slides.length) % slides.length;
+        slides.forEach((slide, i) => {
+          const isCurrent = i === index;
+          slide.classList.toggle("is-active", isCurrent);
+          slide.hidden = !isCurrent;
+        });
+        dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+      }
+
+      function resetTimer() {
+        if (timer) window.clearInterval(timer);
+        timer = window.setInterval(function () {
+          setActive(index + 1);
+        }, 7000);
+      }
+
+      prev.addEventListener("click", function () {
+        setActive(index - 1);
+        resetTimer();
+      });
+
+      next.addEventListener("click", function () {
+        setActive(index + 1);
+        resetTimer();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", function () {
+          setActive(i);
+          resetTimer();
+        });
+      });
+
+      setActive(0);
+      resetTimer();
+    })();
+  </script>
 </body>
 </html>
 
