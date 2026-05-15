@@ -22,20 +22,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <script>try{var s=JSON.parse(localStorage.getItem("planteller-display-settings")||"{}");document.documentElement.dataset.theme=s.theme||"system";document.documentElement.dataset.contrast=s.contrast||"system";document.documentElement.dataset.motion=s.motion||"system";}catch(e){}</script>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/"><img class="brand-mark" src="/assets/images/logo.png" alt="PlanTeller Logo"><span class="logo">PlanTeller</span></a>
-      <nav class="nav-links" aria-label="Rechtsnavigation">
+      <button class="nav-toggle" type="button" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-navigation" data-nav-toggle>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <nav class="nav-links" id="main-navigation" aria-label="Rechtsnavigation" data-nav-menu>
         <a class="pill-link" href="agb">AGB</a>
         <a class="pill-link" href="impressum">Impressum</a>
       </nav>
     </div>
   </header>
 
-  <main class="legal-page">
+  <main class="legal-page" id="main-content">
     <div class="container">
       <a class="back-link" href="/">&lt; Zurück zur Landingpage</a>
       <article class="legal-box">
@@ -161,6 +168,7 @@
       </article>
     </div>
   </main>
+  <script src="/settings.js" defer></script>
 </body>
 </html>
 

@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <script>try{var s=JSON.parse(localStorage.getItem("planteller-display-settings")||"{}");document.documentElement.dataset.theme=s.theme||"system";document.documentElement.dataset.contrast=s.contrast||"system";document.documentElement.dataset.motion=s.motion||"system";}catch(e){}</script>
   <link rel="stylesheet" href="/styles.css?v=20260327b">
   <script type="application/ld+json">
     {
@@ -37,16 +38,16 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/"><img class="brand-mark" src="/assets/images/logo.png" alt="PlanTeller Logo" width="512" height="512" decoding="async"><span class="logo">PlanTeller</span></a>
-      <input class="nav-check" type="checkbox" id="nav-toggle">
-      <label class="nav-toggle" for="nav-toggle" aria-label="Navigation umschalten">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <nav class="nav-links" aria-label="Hauptnavigation">
+      <button class="nav-toggle" type="button" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-navigation" data-nav-toggle>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <nav class="nav-links" id="main-navigation" aria-label="Hauptnavigation" data-nav-menu>
         <a class="pill-link" href="#usp">USPs</a>
         <a class="pill-link" href="#features">Funktionen</a>
         <a class="pill-link" href="#roadmap">Roadmap</a>
@@ -57,7 +58,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="container hero-grid">
         <div>
@@ -67,7 +68,6 @@
               alt="PRE-REGISTER ON Google Play"
               width="1800"
               height="560"
-              style="width:440px;max-width:140vw;height:auto;display:block;"
               decoding="async"
             >
           </a>
@@ -191,27 +191,41 @@
       <div class="container">
         <h2>Impressionen</h2>
         <p class="section-lead">Einblicke in die wichtigsten App-Ansichten.</p>
-        <div class="carousel" data-carousel>
+        <div class="carousel" data-carousel aria-roledescription="Karussell" aria-label="App-Impressionen" aria-describedby="carousel-help carousel-status" tabindex="0">
           <button class="carousel-btn" type="button" data-prev aria-label="Vorheriges Bild">‹</button>
           <div class="carousel-track-wrap">
             <div class="carousel-track" data-track>
-              <figure class="carousel-item is-active"><img src="/assets/images/impression-1.png" alt="PlanTeller Rezeptliste in hellem Design" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-              <figure class="carousel-item" hidden><img src="/assets/images/impression-2.png" alt="PlanTeller Sammlungen Ansicht" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-              <figure class="carousel-item" hidden><img src="/assets/images/impression-3.png" alt="PlanTeller Einkaufsliste in hell und dunkel" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-              <figure class="carousel-item" hidden><img src="/assets/images/impression-6.png" alt="PlanTeller weitere App Impression" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-              <figure class="carousel-item" hidden><img src="/assets/images/impression-4.png" alt="PlanTeller App Impression vier" width="1080" height="2400" loading="lazy" decoding="async"></figure>
-              <figure class="carousel-item" hidden><img src="/assets/images/impression-5.png" alt="PlanTeller App Impression fünf" width="1080" height="2400" loading="lazy" decoding="async"></figure>
+              <figure class="carousel-item is-active" id="carousel-slide-1" role="group" aria-roledescription="Folie" aria-label="Bild 1 von 6"><button class="carousel-zoom" type="button" aria-label="Bild 1 vergrößern: PlanTeller Rezeptliste in hellem Design"><img src="/assets/images/impression-1.png" alt="PlanTeller Rezeptliste in hellem Design" width="1080" height="2400" loading="lazy" decoding="async"></button></figure>
+              <figure class="carousel-item" id="carousel-slide-2" role="group" aria-roledescription="Folie" aria-label="Bild 2 von 6" hidden><button class="carousel-zoom" type="button" aria-label="Bild 2 vergrößern: PlanTeller Sammlungen Ansicht"><img src="/assets/images/impression-2.png" alt="PlanTeller Sammlungen Ansicht" width="1080" height="2400" loading="lazy" decoding="async"></button></figure>
+              <figure class="carousel-item" id="carousel-slide-3" role="group" aria-roledescription="Folie" aria-label="Bild 3 von 6" hidden><button class="carousel-zoom" type="button" aria-label="Bild 3 vergrößern: PlanTeller Einkaufsliste in hell und dunkel"><img src="/assets/images/impression-3.png" alt="PlanTeller Einkaufsliste in hell und dunkel" width="1080" height="2400" loading="lazy" decoding="async"></button></figure>
+              <figure class="carousel-item" id="carousel-slide-4" role="group" aria-roledescription="Folie" aria-label="Bild 4 von 6" hidden><button class="carousel-zoom" type="button" aria-label="Bild 4 vergrößern: PlanTeller weitere App Impression"><img src="/assets/images/impression-6.png" alt="PlanTeller weitere App Impression" width="1080" height="2400" loading="lazy" decoding="async"></button></figure>
+              <figure class="carousel-item" id="carousel-slide-5" role="group" aria-roledescription="Folie" aria-label="Bild 5 von 6" hidden><button class="carousel-zoom" type="button" aria-label="Bild 5 vergrößern: PlanTeller App Impression vier"><img src="/assets/images/impression-4.png" alt="PlanTeller App Impression vier" width="1080" height="2400" loading="lazy" decoding="async"></button></figure>
+              <figure class="carousel-item" id="carousel-slide-6" role="group" aria-roledescription="Folie" aria-label="Bild 6 von 6" hidden><button class="carousel-zoom" type="button" aria-label="Bild 6 vergrößern: PlanTeller App Impression fünf"><img src="/assets/images/impression-5.png" alt="PlanTeller App Impression fünf" width="1080" height="2400" loading="lazy" decoding="async"></button></figure>
             </div>
           </div>
           <button class="carousel-btn" type="button" data-next aria-label="Nächstes Bild">›</button>
         </div>
         <div class="carousel-dots" data-dots>
-          <button class="is-active" type="button" aria-label="Bild 1"></button>
-          <button type="button" aria-label="Bild 2"></button>
-          <button type="button" aria-label="Bild 3"></button>
-          <button type="button" aria-label="Bild 4"></button>
-          <button type="button" aria-label="Bild 5"></button>
-          <button type="button" aria-label="Bild 6"></button>
+          <button class="is-active" type="button" aria-label="Bild 1 anzeigen" aria-current="true" aria-controls="carousel-slide-1"></button>
+          <button type="button" aria-label="Bild 2 anzeigen" aria-current="false" aria-controls="carousel-slide-2"></button>
+          <button type="button" aria-label="Bild 3 anzeigen" aria-current="false" aria-controls="carousel-slide-3"></button>
+          <button type="button" aria-label="Bild 4 anzeigen" aria-current="false" aria-controls="carousel-slide-4"></button>
+          <button type="button" aria-label="Bild 5 anzeigen" aria-current="false" aria-controls="carousel-slide-5"></button>
+          <button type="button" aria-label="Bild 6 anzeigen" aria-current="false" aria-controls="carousel-slide-6"></button>
+        </div>
+        <p class="sr-only" id="carousel-help">Mit Pfeiltasten, Pos1 und Ende können die Bilder gewechselt werden. Enter auf dem Bild öffnet die Vergrößerung.</p>
+        <p class="sr-only" id="carousel-status" aria-live="polite" data-carousel-status>Bild 1 von 6</p>
+        <button class="carousel-pause" type="button" aria-pressed="true" data-carousel-toggle>Automatisch wechseln starten</button>
+        <div class="lightbox" data-lightbox role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-describedby="lightbox-status" hidden>
+          <button class="lightbox-backdrop" type="button" data-lightbox-close aria-label="Vergrößertes Bild schließen" tabindex="-1"></button>
+          <figure class="lightbox-frame">
+            <figcaption class="sr-only" id="lightbox-title">Vergrößerter App-Screenshot</figcaption>
+            <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Vorheriges vergrößertes Bild">‹</button>
+            <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Nächstes vergrößertes Bild">›</button>
+            <button class="lightbox-close" type="button" data-lightbox-close aria-label="Schließen">×</button>
+            <img data-lightbox-image src="" alt="">
+            <span class="sr-only" id="lightbox-status" aria-live="polite" data-lightbox-status>Bild 1 von 6</span>
+          </figure>
         </div>
       </div>
     </section>
@@ -234,12 +248,12 @@
         <h2>Rechtliches</h2>
         <p class="section-lead">Alle wichtigen Seiten für App-Store und Web-Präsenz an einem Ort.</p>
         <div class="legal-grid">
-          <a class="legal-link" href="datenschutz">Datenschutzerklärung <span>></span></a>
-          <a class="legal-link" href="agb">AGB <span>></span></a>
-          <a class="legal-link" href="impressum">Impressum <span>></span></a>
-          <a class="legal-link" href="ki-hinweise">KI-Hinweise & Transparenz <span>></span></a>
-          <a class="legal-link" href="hinweise-disclaimer">Hinweise & Disclaimer <span>></span></a>
-          <a class="legal-link" href="konto-loeschen">Konto löschen <span>></span></a>
+          <a class="legal-link" href="datenschutz">Datenschutzerklärung <span aria-hidden="true">></span></a>
+          <a class="legal-link" href="agb">AGB <span aria-hidden="true">></span></a>
+          <a class="legal-link" href="impressum">Impressum <span aria-hidden="true">></span></a>
+          <a class="legal-link" href="ki-hinweise">KI-Hinweise & Transparenz <span aria-hidden="true">></span></a>
+          <a class="legal-link" href="hinweise-disclaimer">Hinweise & Disclaimer <span aria-hidden="true">></span></a>
+          <a class="legal-link" href="konto-loeschen">Konto löschen <span aria-hidden="true">></span></a>
         </div>
       </div>
     </section>
@@ -261,8 +275,18 @@
       const next = carousel.querySelector("[data-next]");
       const dotsWrap = document.querySelector("[data-dots]");
       const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll("button")) : [];
+      const carouselToggle = document.querySelector("[data-carousel-toggle]");
+      const carouselStatus = document.querySelector("[data-carousel-status]");
+      const lightbox = document.querySelector("[data-lightbox]");
+      const lightboxImage = lightbox ? lightbox.querySelector("[data-lightbox-image]") : null;
+      const lightboxStatus = lightbox ? lightbox.querySelector("[data-lightbox-status]") : null;
+      const lightboxCloseButtons = lightbox ? Array.from(lightbox.querySelectorAll("[data-lightbox-close]")) : [];
+      const lightboxPrev = lightbox ? lightbox.querySelector("[data-lightbox-prev]") : null;
+      const lightboxNext = lightbox ? lightbox.querySelector("[data-lightbox-next]") : null;
+      let lastZoomButton = null;
       let index = 0;
       let timer = null;
+      let isPaused = true;
 
       function setActive(nextIndex) {
         index = (nextIndex + slides.length) % slides.length;
@@ -271,40 +295,197 @@
           slide.classList.toggle("is-active", isCurrent);
           slide.hidden = !isCurrent;
         });
-        dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+        dots.forEach((dot, i) => {
+          const isCurrent = i === index;
+          dot.classList.toggle("is-active", isCurrent);
+          dot.setAttribute("aria-current", String(isCurrent));
+        });
+        if (carouselStatus) {
+          carouselStatus.textContent = "Bild " + (index + 1) + " von " + slides.length;
+        }
+        if (lightboxStatus) {
+          lightboxStatus.textContent = "Bild " + (index + 1) + " von " + slides.length;
+        }
       }
 
       function resetTimer() {
         if (timer) window.clearInterval(timer);
+        if (isPaused) return;
         timer = window.setInterval(function () {
           setActive(index + 1);
         }, 7000);
       }
 
-      prev.addEventListener("click", function () {
-        setActive(index - 1);
+      function setPaused(paused) {
+        isPaused = paused;
+        if (carouselToggle) {
+          carouselToggle.setAttribute("aria-pressed", String(isPaused));
+          carouselToggle.textContent = isPaused ? "Automatisch wechseln starten" : "Automatisch wechseln pausieren";
+        }
+        if (carouselStatus) {
+          carouselStatus.setAttribute("aria-live", isPaused ? "polite" : "off");
+        }
         resetTimer();
+      }
+
+      prev.addEventListener("click", function () {
+        setPaused(true);
+        setActive(index - 1);
       });
 
       next.addEventListener("click", function () {
+        setPaused(true);
         setActive(index + 1);
-        resetTimer();
       });
 
       dots.forEach((dot, i) => {
         dot.addEventListener("click", function () {
+          setPaused(true);
           setActive(i);
+        });
+      });
+
+      if (carouselToggle) {
+        carouselToggle.addEventListener("click", function () {
+          setPaused(!isPaused);
+        });
+      }
+
+      window.addEventListener("planteller-settings-change", function (event) {
+        if (event.detail && event.detail.motion === "reduced") {
+          setPaused(true);
+        }
+      });
+
+      carousel.addEventListener("keydown", function (event) {
+        if (lightbox && !lightbox.hidden) return;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          setPaused(true);
+          setActive(index - 1);
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          setPaused(true);
+          setActive(index + 1);
+        }
+        if (event.key === "Home") {
+          event.preventDefault();
+          setPaused(true);
+          setActive(0);
+        }
+        if (event.key === "End") {
+          event.preventDefault();
+          setPaused(true);
+          setActive(slides.length - 1);
+        }
+      });
+
+      function openLightbox(image, zoomButton) {
+        if (!lightbox || !lightboxImage) return;
+        lastZoomButton = zoomButton;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
+        document.body.classList.add("lightbox-open");
+        setPageInert(true);
+        setActive(index);
+        setPaused(true);
+        if (lightboxNext) lightboxNext.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightbox || !lightboxImage || lightbox.hidden) return;
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        document.body.classList.remove("lightbox-open");
+        setPageInert(false);
+        if (lastZoomButton) lastZoomButton.focus();
+      }
+
+      function setPageInert(isInert) {
+        document.querySelectorAll("header, footer, main > section:not(#impressions)").forEach((element) => {
+          if (isInert) {
+            element.setAttribute("inert", "");
+            element.setAttribute("aria-hidden", "true");
+          } else {
+            element.removeAttribute("inert");
+            element.removeAttribute("aria-hidden");
+          }
+        });
+      }
+
+      function updateLightboxImage() {
+        if (!lightbox || !lightboxImage || lightbox.hidden) return;
+        const currentImage = slides[index].querySelector("img");
+        if (!currentImage) return;
+        lightboxImage.src = currentImage.currentSrc || currentImage.src;
+        lightboxImage.alt = currentImage.alt;
+      }
+
+      function moveLightbox(step) {
+        setPaused(true);
+        setActive(index + step);
+        updateLightboxImage();
+      }
+
+      slides.forEach((slide) => {
+        const zoomButton = slide.querySelector(".carousel-zoom");
+        const image = slide.querySelector("img");
+        if (!zoomButton || !image) return;
+        zoomButton.addEventListener("click", function () {
+          openLightbox(image, zoomButton);
           resetTimer();
         });
       });
 
+      lightboxCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeLightbox);
+      });
+
+      if (lightboxPrev) {
+        lightboxPrev.addEventListener("click", function () {
+          moveLightbox(-1);
+        });
+      }
+
+      if (lightboxNext) {
+        lightboxNext.addEventListener("click", function () {
+          moveLightbox(1);
+        });
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeLightbox();
+        if (lightbox && !lightbox.hidden && event.key === "ArrowLeft") {
+          event.preventDefault();
+          moveLightbox(-1);
+        }
+        if (lightbox && !lightbox.hidden && event.key === "ArrowRight") {
+          event.preventDefault();
+          moveLightbox(1);
+        }
+        if (event.key === "Tab" && lightbox && !lightbox.hidden) {
+          const focusable = Array.from(lightbox.querySelectorAll("button:not([tabindex='-1']), [href], [tabindex]:not([tabindex='-1'])"))
+            .filter((element) => !element.disabled);
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
       setActive(0);
-      resetTimer();
+      setPaused(isPaused);
     })();
   </script>
+  <script src="/settings.js" defer></script>
 </body>
 </html>
-
-
-
-
