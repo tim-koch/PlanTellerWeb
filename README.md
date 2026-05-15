@@ -1,39 +1,30 @@
-﻿# PlanTeller Web
+# PlanTeller Web
 
-Statische Landingpage mit Rechtsseiten für die PlanTeller-App.
+Statische Website für die PlanTeller-App: Landingpage, rechtliche Seiten, App-Store-relevante Inhalte und technische Metadaten für Suchmaschinen und Plattformen.
 
-## Dateien
-- `index.html`: Landingpage
-- `datenschutz.html`: Datenschutzerklärung
-- `agb.html`: AGB
-- `impressum.html`: Impressum
-- `ki-hinweise.html`: KI-Hinweise und Transparenz
-- `hinweise-disclaimer.html`: Hinweise und Disclaimer
-- `recipe-share.html`: Landingpage für Rezept-Freigabelinks
-- `robots.txt`: Crawling-Regeln
-- `sitemap.xml`: Sitemap für Suchmaschinen
+## Inhalt
+
+- `index`: Landingpage für die PlanTeller-App
+- `recipe-share`: Zielseite für geteilte Rezepte
+- `datenschutz`: Datenschutzerklärung
+- `agb`: Allgemeine Geschäftsbedingungen
+- `impressum`: Impressum
+- `ki-hinweise`: Hinweise zu KI-Funktionen und Transparenz
+- `hinweise-disclaimer`: Rechtliche Hinweise und Disclaimer
+- `konto-loeschen`: Anleitung zur Kontolöschung
+- `styles.css`: Zentrales Styling
+- `assets/`: Bilder, Logo, Fonts und Badges
+- `robots.txt` und `sitemap.xml`: SEO- und Crawling-Dateien
+- `.well-known/assetlinks.json`: Android App Links / Digital Asset Links
+- `deploy/`: Docker-Compose- und Caddy-Konfiguration
+
+Die HTML-Seiten werden bewusst ohne `.html`-Dateiendung gepflegt, weil die produktive Website diese URL-Struktur verwendet.
 
 ## Domain
-- Canonical-Domain: `https://www.planteller.de`
-- `https://planteller.de` wird auf `https://www.planteller.de` weitergeleitet.
 
-## HTTPS-Deployment auf Server (Docker + Caddy)
-Voraussetzungen:
-- Docker und Docker Compose Plugin installiert
-- DNS gesetzt:
-  - `A`-Record `planteller.de` -> Server-IP
-  - `A`-Record `www.planteller.de` -> Server-IP
-- Ports `80` und `443` offen
+- Produktive Domain: `https://www.planteller.de`
+- Root-Domain: `https://planteller.de`
+- Canonical URLs zeigen auf die `www`-Domain.
+- Caddy leitet `.html`-Aufrufe auf die sauberen URLs ohne Dateiendung um.
 
-Schritte auf dem Server:
-1. Repository klonen:
-   - `git clone https://github.com/tim-koch/PlanTellerWeb.git`
-   - `cd PlanTellerWeb`
-2. Env-Datei anlegen:
-   - `copy deploy\.env.example deploy\.env` (Windows)
-   - oder `cp deploy/.env.example deploy/.env` (Linux)
-   - optional E-Mail in `deploy/.env` anpassen
-3. Container starten:
-   - `docker compose --env-file deploy/.env -f deploy/docker-compose.yml up -d`
 
-Danach ist die Seite unter `https://www.planteller.de` live.
