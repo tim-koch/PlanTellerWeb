@@ -1,3 +1,4 @@
 # Local 404 image variants. Keep the selected production image tracked.
 assets/images/404*.png
 !assets/images/404.png
+.env
