@@ -1110,7 +1110,13 @@ button:focus-visible {
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 340px);
+    gap: 24px;
+  }
+
+  .phone-card {
+    width: min(340px, 100%);
+    justify-self: end;
   }
 
   .features,
@@ -1201,6 +1207,15 @@ button:focus-visible {
   .hero {
     padding-top: 34px;
     padding-bottom: 34px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-card {
+    width: 100%;
+    justify-self: stretch;
   }
 
   .hero h1 {
