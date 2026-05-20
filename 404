@@ -46,7 +46,7 @@
   <main class="legal-page" id="main-content">
     <div class="container">
       <article class="legal-box not-found-box">
-        <img class="not-found-image" src="/assets/images/404.png" alt="PlanTeller-Figur neben einer 404-Zahl" width="1672" height="941" decoding="async" fetchpriority="high">
+        <img class="not-found-image" src="/assets/images/404-1200.webp" alt="PlanTeller-Figur neben einer 404-Zahl" width="1672" height="941" decoding="async" fetchpriority="high">
         <h1>Diese Seite gibt es nicht.</h1>
         <p>Der Link ist vielleicht veraltet, falsch kopiert oder die Seite wurde verschoben.</p>
         <div class="hero-actions">
