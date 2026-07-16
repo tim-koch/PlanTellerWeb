@@ -6,7 +6,10 @@
       "numberOfRuns": 1,
       "settings": {
         "chromeFlags": "--no-sandbox",
-        "throttlingMethod": "devtools"
+        "throttlingMethod": "devtools",
+        "throttling": {
+          "cpuSlowdownMultiplier": 3
+        }
       }
     },
     "assert": {
