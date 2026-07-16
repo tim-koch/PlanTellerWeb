@@ -34,10 +34,10 @@ test("Typografie bleibt in allen Viewports identisch", async ({ page }) => {
   }));
 
   expect(fonts.body).not.toMatch(/Manrope|Rosehot/i);
-  expect(fonts.brand).toMatch(/^Georgia/i);
+  expect(fonts.brand).toMatch(/^Baskerville/i);
 });
 
-test("Favicon passt sich an helle und dunkle Browser an", async ({
+test("Favicon verwendet das kontrastreiche PlanTeller-Markenlogo", async ({
   page,
   request,
 }) => {
@@ -48,7 +48,10 @@ test("Favicon passt sich an helle und dunkle Browser an", async ({
   );
 
   const favicon = await request.get("/favicon.svg");
-  expect(await favicon.text()).toContain("@media (prefers-color-scheme: dark)");
+  const faviconSvg = await favicon.text();
+  expect(faviconSvg).toContain('viewBox="0 0 5225 5225"');
+  expect(faviconSvg).toContain("fill:#314739");
+  expect(faviconSvg).toContain("fill:#f8ecda");
 });
 
 test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {
