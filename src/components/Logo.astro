@@ -1,0 +1,43 @@
+---
+import logoDark from "../assets/brand/logo-dark.svg";
+import logoLight from "../assets/brand/logo-light.svg";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<a
+  class="group inline-flex items-center gap-2.5 no-underline"
+  href="/"
+  aria-label="PlanTeller Startseite"
+>
+  <span
+    class:list={["relative block shrink-0", compact ? "size-9" : "size-11"]}
+  >
+    <img
+      class="absolute inset-0 size-full object-contain dark:hidden"
+      src={logoLight.src}
+      alt=""
+      width="5225"
+      height="5225"
+    />
+    <img
+      class="absolute inset-0 hidden size-full object-contain dark:block"
+      src={logoDark.src}
+      alt=""
+      width="5225"
+      height="5225"
+    />
+  </span>
+  <span
+    class:list={[
+      "brand-heading transition-opacity group-hover:opacity-75",
+      compact ? "text-3xl" : "text-4xl",
+    ]}
+  >
+    PlanTeller
+  </span>
+</a>

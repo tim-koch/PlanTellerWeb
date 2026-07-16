@@ -1,26 +1,20 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>PlanTeller</title>
-  </head>
-  <body class="antialiased">
-    <main>
-      <div class="page-container section-space">
-        <p
-          class="mb-4 font-bold uppercase tracking-[0.18em] text-[var(--brand)]"
-        >
-          Geschlossene Beta
-        </p>
-        <h1 class="brand-heading max-w-4xl text-6xl sm:text-7xl lg:text-8xl">
-          Weniger Essensstress. Mehr Plan auf dem Teller.
-        </h1>
-      </div>
-    </main>
-  </body>
-</html>
+<BaseLayout
+  title="PlanTeller – Rezepte, Wochenplanung und Einkauf gemeinsam organisieren"
+  description="PlanTeller verbindet Rezepte, Wochenplanung und eine synchronisierte Einkaufsliste in einer ruhigen App."
+  canonicalPath="/"
+>
+  <main id="main-content">
+    <div class="page-container section-space">
+      <p class="mb-4 font-bold tracking-[0.18em] text-[var(--brand)] uppercase">
+        Geschlossene Beta
+      </p>
+      <h1 class="brand-heading max-w-4xl text-6xl sm:text-7xl lg:text-8xl">
+        Weniger Essensstress. Mehr Plan auf dem Teller.
+      </h1>
+    </div>
+  </main>
+</BaseLayout>

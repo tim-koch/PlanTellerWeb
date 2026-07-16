@@ -1,0 +1,45 @@
+<script is:inline>
+  (() => {
+    const key = "planteller-display-settings";
+    const allowed = {
+      theme: ["system", "light", "dark"],
+      contrast: ["system", "standard", "high"],
+      motion: ["system", "reduced"],
+    };
+    const defaults = { theme: "system", contrast: "system", motion: "system" };
+    let stored = {};
+    try {
+      stored = JSON.parse(localStorage.getItem(key) || "{}");
+    } catch {
+      // Ungültige oder blockierte lokale Einstellungen werden ignoriert.
+    }
+    const settings = Object.fromEntries(
+      Object.entries(defaults).map(([name, fallback]) => [
+        name,
+        allowed[name].includes(stored[name]) ? stored[name] : fallback,
+      ]),
+    );
+    const root = document.documentElement;
+    root.dataset.theme = settings.theme;
+    root.dataset.contrast = settings.contrast;
+    root.dataset.motion = settings.motion;
+    root.dataset.resolvedTheme =
+      settings.theme === "system"
+        ? matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : settings.theme;
+    root.dataset.resolvedContrast =
+      settings.contrast === "system"
+        ? matchMedia("(prefers-contrast: more)").matches
+          ? "high"
+          : "standard"
+        : settings.contrast;
+    root.dataset.resolvedMotion =
+      settings.motion === "reduced" ||
+      (settings.motion === "system" &&
+        matchMedia("(prefers-reduced-motion: reduce)").matches)
+        ? "reduced"
+        : "standard";
+  })();
+</script>

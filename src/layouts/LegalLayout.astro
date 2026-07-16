@@ -1,0 +1,62 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  updated: string;
+}
+
+const { title, description, canonicalPath, updated } = Astro.props;
+---
+
+<BaseLayout {title} {description} {canonicalPath}>
+  <main class="page-container section-space" id="main-content">
+    <a class="mb-6 inline-flex font-bold text-[var(--brand)]" href="/"
+      >← Zurück zur Startseite</a
+    >
+    <article
+      class="surface-card legal-content mx-auto max-w-4xl p-6 sm:p-9 lg:p-12"
+    >
+      <header class="mb-10 border-b border-[var(--line)] pb-7">
+        <h1 class="brand-heading text-5xl sm:text-6xl">{title}</h1>
+        <p class="mt-4 text-sm text-[var(--muted)]">
+          <strong>Stand:</strong>
+          {updated}
+        </p>
+      </header>
+      <slot />
+    </article>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .legal-content h2 {
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .legal-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .legal-content p,
+  .legal-content ul,
+  .legal-content ol {
+    margin-block: 0.8rem;
+  }
+  .legal-content ul,
+  .legal-content ol {
+    padding-left: 1.4rem;
+  }
+  .legal-content a {
+    color: var(--brand);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

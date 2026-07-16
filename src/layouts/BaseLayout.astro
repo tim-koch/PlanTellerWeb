@@ -1,0 +1,61 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SeoHead from "../components/SeoHead.astro";
+import ThemeInit from "../components/ThemeInit.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  image?: string;
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  hideNavigation?: boolean;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  image,
+  noindex,
+  structuredData,
+  hideNavigation = false,
+  bodyClass = "",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173c2b" />
+    <meta name="color-scheme" content="light dark" />
+    <SeoHead
+      {title}
+      {description}
+      {canonicalPath}
+      {image}
+      {noindex}
+      {structuredData}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ThemeInit />
+  </head>
+  <body class={bodyClass}>
+    <a
+      class="fixed top-3 left-3 z-[100] -translate-y-24 rounded-full bg-[var(--brand-strong)] px-4 py-2 font-bold text-[var(--inverse)] transition focus:translate-y-0"
+      href="#main-content">Zum Hauptinhalt</a
+    >
+    {!hideNavigation && <Header />}
+    <slot />
+    {!hideNavigation && <Footer />}
+    <script>
+      import "../scripts/site-shell";
+    </script>
+  </body>
+</html>
