@@ -10,6 +10,7 @@ export interface Props {
   widths: number[];
   sizes: string;
   priority?: boolean;
+  quality?: number;
   class?: string;
   zoomable?: boolean;
 }
@@ -21,6 +22,7 @@ const {
   widths,
   sizes,
   priority = false,
+  quality = 65,
   class: className,
 } = Astro.props;
 const shared = {
@@ -28,8 +30,9 @@ const shared = {
   sizes,
   formats: ["avif", "webp"] as ("avif" | "webp")[],
   fallbackFormat: "webp" as const,
-  quality: 65,
+  quality,
   loading: priority ? ("eager" as const) : ("lazy" as const),
+  fetchpriority: priority ? ("high" as const) : undefined,
   decoding: "async" as const,
 };
 ---

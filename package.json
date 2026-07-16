@@ -17,7 +17,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:a11y": "playwright test --grep @a11y",
-    "test:links": "linkinator dist --recurse --skip '^(mailto:|planteller:)'"
+    "test:links": "linkinator dist --recurse --clean-urls --check-fragments --skip '^(mailto:|planteller:|https://www\\.planteller\\.de/)'",
+    "test:lighthouse": "lhci autorun"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",

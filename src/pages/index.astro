@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import appHero from "../assets/app/light/hero.png";
 import impression1 from "../assets/app/light/impression-1.png";
 import impression2 from "../assets/app/light/impression-2.png";
@@ -81,7 +81,7 @@ const impressions = [
     <section
       class="page-container grid min-h-[calc(100svh-5rem)] items-center gap-12 py-14 lg:grid-cols-[1fr_0.8fr] lg:py-20"
     >
-      <div data-reveal>
+      <div>
         <p
           class="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)]/70 px-3 py-1.5 text-xs font-extrabold tracking-[0.14em] text-[var(--brand)] uppercase"
         >
@@ -128,11 +128,7 @@ const impressions = [
           >
         </div>
       </div>
-      <div
-        class="relative mx-auto w-full max-w-[28rem]"
-        data-hero-visual
-        data-reveal
-      >
+      <div class="relative mx-auto w-full max-w-[28rem]" data-hero-visual>
         <div
           class="absolute -inset-8 rounded-[3rem] bg-[var(--sage)]/20 blur-3xl"
         >
@@ -146,15 +142,13 @@ const impressions = [
         <div
           class="relative rounded-[2.8rem] border-[0.65rem] border-[var(--ink)] bg-[var(--ink)] p-1 shadow-[var(--shadow-float)]"
         >
-          <Image
-            src={appHero}
+          <ThemePicture
+            light={appHero}
             alt="PlanTeller App mit Rezeptübersicht"
-            widths={[360, 540, 720]}
+            widths={[320, 360, 480, 540, 640, 720]}
             sizes="(max-width: 1023px) 82vw, 28rem"
-            format="avif"
-            quality={60}
-            loading="eager"
-            fetchpriority="high"
+            quality={50}
+            priority
             class="aspect-[9/20] w-full rounded-[1.9rem] object-cover object-top"
           />
         </div>
@@ -355,6 +349,7 @@ const impressions = [
         widths={[480, 800, 1200]}
         sizes="(max-width: 767px) 92vw, 75rem"
         formats={["avif", "webp"]}
+        fallbackFormat="webp"
         quality={65}
         class="w-full rounded-[2rem] border border-[var(--line)] shadow-[var(--shadow-soft)]"
       />
