@@ -1,20 +1,393 @@
 ---
+import { Image, Picture } from "astro:assets";
+import appHero from "../assets/app/light/hero.png";
+import marketingImage from "../assets/marketing/planteller-app.avif";
+import Button from "../components/Button.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import Icon from "../components/Icon.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const softwareData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "PlanTeller",
+  applicationCategory: "LifestyleApplication",
+  operatingSystem: "Android",
+  description:
+    "Rezepte, Wochenplanung und synchronisierte Einkaufslisten für Haushalte.",
+  url: "https://www.planteller.de/",
+};
+
+const faqData = [
+  [
+    "Ist PlanTeller schon verfügbar?",
+    "PlanTeller befindet sich in einer geschlossenen Beta. Über das Formular kannst du dich für einen Testplatz bewerben.",
+  ],
+  [
+    "Was ist Telli?",
+    "Telli ist der kleine Assistent in PlanTeller. Er begleitet die Einführung und soll Schritt für Schritt mehr hilfreiche Unterstützung lernen.",
+  ],
+  [
+    "Funktioniert PlanTeller für Haushalte?",
+    "Ja. Rezepte, Vorräte, Planung und Einkauf können innerhalb eines Haushalts synchron gehalten werden.",
+  ],
+];
+const structuredData = [
+  softwareData,
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqData.map(([name, text]) => ({
+      "@type": "Question",
+      name,
+      acceptedAnswer: { "@type": "Answer", text },
+    })),
+  },
+];
 ---
 
 <BaseLayout
   title="PlanTeller – Rezepte, Wochenplanung und Einkauf gemeinsam organisieren"
-  description="PlanTeller verbindet Rezepte, Wochenplanung und eine synchronisierte Einkaufsliste in einer ruhigen App."
+  description="PlanTeller verbindet Rezepte, Wochenplanung und eine synchronisierte Einkaufsliste in einer ruhigen App. Bewirb dich für die geschlossene Beta."
   canonicalPath="/"
+  {structuredData}
 >
   <main id="main-content">
-    <div class="page-container section-space">
-      <p class="mb-4 font-bold tracking-[0.18em] text-[var(--brand)] uppercase">
-        Geschlossene Beta
-      </p>
-      <h1 class="brand-heading max-w-4xl text-6xl sm:text-7xl lg:text-8xl">
-        Weniger Essensstress. Mehr Plan auf dem Teller.
-      </h1>
-    </div>
+    <section
+      class="page-container grid min-h-[calc(100svh-5rem)] items-center gap-12 py-14 lg:grid-cols-[1fr_0.8fr] lg:py-20"
+    >
+      <div data-reveal>
+        <p
+          class="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)]/70 px-3 py-1.5 text-xs font-extrabold tracking-[0.14em] text-[var(--brand)] uppercase"
+        >
+          <span class="size-2 rounded-full bg-[var(--sage)]"></span> Geschlossene
+          Beta
+        </p>
+        <h1
+          class="brand-heading text-balance max-w-4xl text-[clamp(3.8rem,12vw,7.4rem)]"
+        >
+          Weniger Essensstress. Mehr Plan auf dem Teller.
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg text-[var(--muted)] sm:text-xl">
+          Rezepte sammeln, die Woche planen und den Einkauf gemeinsam erledigen
+          – ruhig, übersichtlich und an einem Ort.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href="/kontakt?anliegen=beta" icon="arrow-right-broken"
+            >Für die Beta bewerben</Button
+          >
+          <Button href="#features" variant="secondary"
+            >Funktionen entdecken</Button
+          >
+        </div>
+        <div
+          class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm font-bold text-[var(--muted)]"
+        >
+          <span class="inline-flex items-center gap-2"
+            ><Icon
+              name="check-circle-broken"
+              class="size-5 text-[var(--brand)]"
+            /> Haushalt synchron</span
+          >
+          <span class="inline-flex items-center gap-2"
+            ><Icon
+              name="check-circle-broken"
+              class="size-5 text-[var(--brand)]"
+            /> KI mit Kontrolle</span
+          >
+          <span class="inline-flex items-center gap-2"
+            ><Icon
+              name="check-circle-broken"
+              class="size-5 text-[var(--brand)]"
+            /> Ohne Werbetracking</span
+          >
+        </div>
+      </div>
+      <div
+        class="relative mx-auto w-full max-w-[28rem]"
+        data-hero-visual
+        data-reveal
+      >
+        <div
+          class="absolute -inset-8 rounded-[3rem] bg-[var(--sage)]/20 blur-3xl"
+        >
+        </div>
+        <span class="orbit-leaf orbit-leaf-a"
+          ><Icon name="leaf-broken" class="size-7" /></span
+        >
+        <span class="orbit-leaf orbit-leaf-b"
+          ><Icon name="stars-minimalistic-broken" class="size-7" /></span
+        >
+        <div
+          class="relative rounded-[2.8rem] border-[0.65rem] border-[var(--ink)] bg-[var(--ink)] p-1 shadow-[var(--shadow-float)]"
+        >
+          <Image
+            src={appHero}
+            alt="PlanTeller App mit Rezeptübersicht"
+            widths={[360, 540, 720]}
+            sizes="(max-width: 1023px) 82vw, 28rem"
+            format="avif"
+            quality={60}
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-[9/20] w-full rounded-[1.9rem] object-cover object-top"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space bg-[var(--surface-muted)]/55" id="usp">
+      <div class="page-container">
+        <SectionHeading
+          eyebrow="Warum PlanTeller?"
+          title="Von der Idee bis zum Einkauf verbunden."
+          intro="PlanTeller nimmt dir nicht das Kochen ab. Aber die vielen kleinen Entscheidungen davor werden deutlich leichter."
+        />
+        <div class="grid gap-5 md:grid-cols-3">
+          <FeatureCard icon="chef-hat-broken" title="Rezepte, die mitdenken"
+            >Eigene Rezepte, Importe und KI-Unterstützung landen in einer
+            gemeinsamen, gut durchsuchbaren Sammlung.</FeatureCard
+          >
+          <FeatureCard
+            icon="calendar-broken"
+            title="Ein Plan, der wirklich hilft"
+            >Plane Mahlzeiten flexibel und überführe sie ohne Abschreiben in
+            eine passende Einkaufsliste.</FeatureCard
+          >
+          <FeatureCard
+            icon="users-group-rounded-broken"
+            title="Gemeinsam aktuell"
+            >Haushaltsmitglieder sehen denselben Stand bei Rezepten, Vorräten,
+            Planung und Einkauf.</FeatureCard
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space" id="tutorial">
+      <div
+        class="page-container grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center"
+      >
+        <SectionHeading
+          eyebrow="Neu dabei"
+          title="In wenigen Schritten startklar."
+          intro="Die neue Tutorial-Einführung zeigt dir die wichtigsten Wege durch PlanTeller, ohne dich mit jedem Detail auf einmal zu überladen."
+        />
+        <ol class="grid list-none gap-4 p-0 sm:grid-cols-3">
+          {
+            [
+              ["01", "Einrichten", "Profil und Haushalt anlegen."],
+              ["02", "Sammeln", "Rezepte hinzufügen oder importieren."],
+              ["03", "Planen", "Woche füllen und Einkauf starten."],
+            ].map(([number, title, text]) => (
+              <li class="surface-card p-5" data-reveal>
+                <>
+                  <span class="brand-heading text-4xl text-[var(--sage)]">
+                    {number}
+                  </span>
+                  <h3 class="mt-4 font-extrabold">{title}</h3>
+                  <p class="mt-2 text-sm text-[var(--muted)]">{text}</p>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="page-container section-space" id="telli">
+      <div
+        class="relative overflow-hidden rounded-[2.25rem] bg-[var(--brand-strong)] px-6 py-12 text-[var(--inverse)] sm:px-10 lg:px-16 lg:py-16"
+        data-reveal
+      >
+        <div
+          class="absolute top-0 right-0 size-72 translate-x-1/3 -translate-y-1/3 rounded-full border border-[var(--sage)]/35"
+        >
+        </div>
+        <div
+          class="relative grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center"
+        >
+          <div
+            class="grid size-24 place-items-center rounded-[2rem] bg-[var(--inverse)]/10 text-[var(--sage)]"
+          >
+            <Icon name="magic-stick-3-broken" class="size-14" />
+          </div>
+          <div class="max-w-3xl">
+            <p
+              class="text-xs font-extrabold tracking-[0.18em] text-[var(--sage)] uppercase"
+            >
+              Hallo, ich bin Telli
+            </p><h2 class="brand-heading mt-3 text-5xl sm:text-6xl">
+              Der kleine Assistent in Ausbildung.
+            </h2><p class="mt-5 text-lg text-[var(--inverse)]/80">
+              Telli begleitet dich durch die Einführung und hilft dabei,
+              PlanTeller schneller kennenzulernen. Er lernt noch – und soll
+              künftig an weiteren Stellen sinnvoll unterstützen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space bg-[var(--surface-muted)]/55" id="features">
+      <div class="page-container">
+        <SectionHeading
+          eyebrow="Funktionen"
+          title="Alles Wichtige ohne App-Chaos."
+          intro="Jede Funktion greift in die nächste – damit Informationen nicht mehrfach gepflegt werden müssen."
+        />
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <FeatureCard
+            icon="book-2-broken"
+            title="Rezeptverwaltung"
+            status="live"
+            >Rezepte, Kategorien, Tags, Favoriten und Sammlungen übersichtlich
+            verwalten.</FeatureCard
+          >
+          <FeatureCard
+            icon="magic-stick-3-broken"
+            title="KI-Rezepte & Import"
+            status="live"
+            >Rezepte strukturieren, übersetzen und bei der Erstellung
+            unterstützen lassen.</FeatureCard
+          >
+          <FeatureCard
+            icon="home-smile-broken"
+            title="Gemeinsamer Haushalt"
+            status="live"
+            >Inhalte sicher mit den Menschen synchron halten, mit denen du
+            planst.</FeatureCard
+          >
+          <FeatureCard
+            icon="calendar-broken"
+            title="Wochenplanung"
+            status="live"
+            >Frühstück, Mittag und Abend flexibel planen und jederzeit
+            verschieben.</FeatureCard
+          >
+          <FeatureCard
+            icon="cart-large-2-broken"
+            title="Sortierter Einkauf"
+            status="live"
+            >Benötigte Zutaten automatisch bündeln und nach Bereichen sortieren.</FeatureCard
+          >
+          <FeatureCard
+            icon="chart-2-broken"
+            title="Nährwerte & Makros"
+            status="planned"
+            >Eine verständliche Übersicht ist in Entwicklung und wird erst
+            veröffentlicht, wenn sie verlässlich ist.</FeatureCard
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="page-container section-space" id="roadmap">
+      <SectionHeading
+        eyebrow="Aktive Entwicklung"
+        title="Heute nützlich. Morgen noch ein Stück klüger."
+        intro="Beta-Feedback fließt direkt in die Weiterentwicklung ein. Geplante Funktionen bleiben klar als solche markiert."
+      />
+      <Picture
+        src={marketingImage}
+        alt="PlanTeller – Rezepte, Wochenplanung und Einkauf an einem Ort"
+        widths={[480, 800, 1200]}
+        sizes="(max-width: 767px) 92vw, 75rem"
+        formats={["avif", "webp"]}
+        quality={65}
+        class="w-full rounded-[2rem] border border-[var(--line)] shadow-[var(--shadow-soft)]"
+      />
+    </section>
+
+    <section class="section-space bg-[var(--surface-muted)]/55" id="faq">
+      <div class="page-container">
+        <SectionHeading eyebrow="Kurz erklärt" title="Häufige Fragen." />
+        <div class="mx-auto grid max-w-4xl gap-3">
+          {
+            faqData.map(([question, answer]) => (
+              <details class="surface-card group p-5">
+                <>
+                  <summary class="cursor-pointer list-none pr-8 text-lg font-extrabold">
+                    {question}
+                    <span class="float-right text-[var(--brand)] group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p class="mt-4 text-[var(--muted)]">{answer}</p>
+                </>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="page-container section-space" id="cta">
+      <div
+        class="surface-card grid gap-7 bg-[var(--sage-soft)] p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center"
+        data-reveal
+      >
+        <div>
+          <p
+            class="text-xs font-extrabold tracking-[0.18em] text-[var(--brand)] uppercase"
+          >
+            Mitgestalten
+          </p><h2 class="brand-heading mt-3 text-5xl sm:text-6xl">
+            Teste PlanTeller in der Beta.
+          </h2><p class="mt-4 max-w-2xl text-[var(--muted)]">
+            Erzähl uns kurz, wie du heute Rezepte und Einkäufe organisierst. Wir
+            melden uns persönlich bei dir.
+          </p>
+        </div>
+        <Button href="/kontakt?anliegen=beta" icon="letter-broken"
+          >Beta-Anfrage senden</Button
+        >
+      </div>
+      <span id="impressions" class="sr-only" aria-hidden="true"></span><span
+        id="legal"
+        class="sr-only"
+        aria-hidden="true"></span>
+    </section>
   </main>
+
+  <script>
+    import "../scripts/home-motion";
+  </script>
 </BaseLayout>
+
+<style>
+  .orbit-leaf {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--brand);
+    box-shadow: var(--shadow-soft);
+  }
+  .orbit-leaf-a {
+    top: 11%;
+    left: -1.8rem;
+  }
+  .orbit-leaf-b {
+    right: -1.3rem;
+    bottom: 18%;
+  }
+  @media (max-width: 32rem) {
+    .orbit-leaf {
+      width: 3rem;
+      height: 3rem;
+    }
+    .orbit-leaf-a {
+      left: -0.5rem;
+    }
+    .orbit-leaf-b {
+      right: -0.25rem;
+    }
+  }
+</style>
