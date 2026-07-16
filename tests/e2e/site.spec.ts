@@ -14,6 +14,9 @@ const publicRoutes = [
   "/404",
   "/.well-known/assetlinks.json",
   "/favicon.svg",
+  "/favicon-32x32.png",
+  "/favicon-16x16.png",
+  "/apple-touch-icon.png",
   "/robots.txt",
   "/sitemap.xml",
 ];
@@ -37,21 +40,27 @@ test("Typografie bleibt in allen Viewports identisch", async ({ page }) => {
   expect(fonts.brand).toMatch(/^Baskerville/i);
 });
 
-test("Favicon verwendet das kontrastreiche PlanTeller-Markenlogo", async ({
+test("Favicon bleibt klein, kontrastreich und browserkompatibel", async ({
   page,
   request,
 }) => {
   await page.goto("/");
-  await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
-    "href",
-    "/favicon.svg",
-  );
 
   const favicon = await request.get("/favicon.svg");
   const faviconSvg = await favicon.text();
-  expect(faviconSvg).toContain('viewBox="0 0 5225 5225"');
-  expect(faviconSvg).toContain("fill:#314739");
-  expect(faviconSvg).toContain("fill:#f8ecda");
+  expect(faviconSvg).toContain('viewBox="0 0 64 64"');
+  expect(faviconSvg).toContain('fill="#284f3b"');
+  expect(faviconSvg).toContain('fill="#f8ecda"');
+  await expect(
+    page.locator('link[rel="icon"][type="image/svg+xml"]'),
+  ).toHaveAttribute("href", "/favicon.svg?v=2");
+  await expect(page.locator('link[rel="icon"][type="image/png"]')).toHaveCount(
+    2,
+  );
+  await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute(
+    "href",
+    "/apple-touch-icon.png?v=2",
+  );
 });
 
 test("Google-Play-Badge kennzeichnet die Android-Verfügbarkeit", async ({
