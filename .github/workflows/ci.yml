@@ -2,7 +2,7 @@ name: Qualität
 
 on:
   push:
-    branches: [main, umbau/astro-tailwind]
+    branches: [main]
   pull_request:
 
 permissions:
