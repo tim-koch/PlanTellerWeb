@@ -1,4 +1,7 @@
 ---
+import { Picture } from "astro:assets";
+import googlePlayBadge from "../assets/badges/google-play-preregister.png";
+
 interface Props {
   href?: string;
   class?: string;
@@ -17,13 +20,18 @@ const { href = "/kontakt?anliegen=beta", class: className = "" } = Astro.props;
     aria-label="Für die geschlossene PlanTeller-Beta auf Android bewerben"
     data-google-play-badge
   >
-    <img
-      src="/assets/badges/google-play-preregister.png"
+    <Picture
+      src={googlePlayBadge}
       alt="Vorregistrierung bei Google Play"
-      width="771"
-      height="229"
+      widths={[176, 192, 352, 384]}
+      sizes="(max-width: 639px) 11rem, 12rem"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={70}
       class="h-auto w-44 sm:w-48"
       decoding="async"
+      loading="lazy"
+      fetchpriority="low"
     />
   </a>
   <span class="max-w-44 text-sm leading-snug text-[var(--muted)]">

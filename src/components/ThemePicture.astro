@@ -35,11 +35,22 @@ const shared = {
   fetchpriority: priority ? ("high" as const) : undefined,
   decoding: "async" as const,
 };
+const usesSharedSource = dark === light;
 ---
 
-<span class="block dark:hidden" data-theme-picture="light">
-  <Picture src={light} {alt} {...shared} class={className} />
-</span>
-<span class="hidden dark:block" data-theme-picture="dark">
-  <Picture src={dark} {alt} {...shared} class={className} />
-</span>
+{
+  usesSharedSource ? (
+    <span class="block" data-theme-picture="adaptive">
+      <Picture src={light} {alt} {...shared} class={className} />
+    </span>
+  ) : (
+    <>
+      <span class="block dark:hidden" data-theme-picture="light">
+        <Picture src={light} {alt} {...shared} class={className} />
+      </span>
+      <span class="hidden dark:block" data-theme-picture="dark">
+        <Picture src={dark} {alt} {...shared} class={className} />
+      </span>
+    </>
+  )
+}

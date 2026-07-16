@@ -13,7 +13,6 @@ const publicRoutes = [
   "/recipe-share?token=test-token",
   "/404",
   "/.well-known/assetlinks.json",
-  "/assets/badges/google-play-preregister.png",
   "/favicon.svg",
   "/robots.txt",
   "/sitemap.xml",
@@ -74,8 +73,14 @@ test("Google-Play-Badge kennzeichnet die Android-Verfügbarkeit", async ({
 
 test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator('header [data-logo-theme="light"]')).toBeVisible();
-  await expect(page.locator('header [data-logo-theme="dark"]')).toBeHidden();
+  const logo = page.locator('header [data-logo-theme="adaptive"]');
+  await expect(logo).toBeVisible();
+  await expect(
+    page.locator('[data-theme-picture="adaptive"] img').first(),
+  ).toBeVisible();
+  const lightLogoColor = await logo.evaluate(
+    (element) => getComputedStyle(element).backgroundColor,
+  );
   await page
     .getByRole("button", { name: "Anzeige-Einstellungen öffnen" })
     .click();
@@ -84,9 +89,10 @@ test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {
     "data-resolved-theme",
     "dark",
   );
-  await expect(page.locator('header [data-logo-theme="light"]')).toBeHidden();
-  await expect(page.locator('header [data-logo-theme="dark"]')).toBeVisible();
-  await expect(page.locator("img.dark\\:block").first()).toBeVisible();
+  const darkLogoColor = await logo.evaluate(
+    (element) => getComputedStyle(element).backgroundColor,
+  );
+  expect(darkLogoColor).not.toBe(lightLogoColor);
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute(
     "data-resolved-theme",

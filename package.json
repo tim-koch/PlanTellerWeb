@@ -18,7 +18,9 @@
     "test:e2e": "playwright test",
     "test:a11y": "playwright test --grep @a11y",
     "test:links": "linkinator dist --recurse --clean-urls --check-fragments --skip '^(mailto:|planteller:|https://www\\.planteller\\.de/)'",
-    "test:lighthouse": "lhci autorun"
+    "test:lighthouse": "npm run test:lighthouse:mobile && npm run test:lighthouse:desktop",
+    "test:lighthouse:mobile": "lhci autorun --config=lighthouserc.json",
+    "test:lighthouse:desktop": "lhci autorun --config=lighthouserc.desktop.json"
   },
   "dependencies": {
     "@formspree/ajax": "^1.1.5",

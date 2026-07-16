@@ -50,7 +50,7 @@ npm test               Unit-Tests
 npm run test:e2e       Playwright in drei Viewports
 npm run test:a11y      axe-Tests
 npm run test:links     interne Links und Anker prüfen
-npm run test:lighthouse Lighthouse-Ziele prüfen
+npm run test:lighthouse Lighthouse-Ziele mobil und Desktop prüfen
 ```
 
 Vor dem ersten lokalen Browserlauf:
@@ -60,6 +60,8 @@ npx playwright install chromium
 ```
 
 Für Lighthouse muss `CHROME_PATH` auf das installierte Chromium zeigen. In GitHub Actions wird das automatisch gesetzt.
+
+Die Start- und Kontaktseite werden getrennt mit mobilen und Desktop-Profilen geprüft. Für Performance, Barrierefreiheit, Best Practices und SEO gilt in beiden Profilen ein Mindestwert von 95.
 
 ## Seiten und URL-Kompatibilität
 
@@ -125,10 +127,7 @@ Vor einem Release ist genau eine manuelle Testeinsendung zulässig. Anschließen
 
 ## Themes und Anzeigeeinstellungen
 
-Die Website unterstützt System, Light, Dark, hohen Kontrast und reduzierte Bewegung. Einstellungen bleiben unter `planteller-display-settings` im Browser gespeichert. Die Logos werden gemeinsam mit dem Theme gewechselt:
-
-- Light Mode: `src/assets/brand/logo-light.svg`
-- Dark Mode: `src/assets/brand/logo-dark.svg`
+Die Website unterstützt System, Light, Dark, hohen Kontrast und reduzierte Bewegung. Einstellungen bleiben unter `planteller-display-settings` im Browser gespeichert. Das optimierte Vektorlogo unter `src/assets/brand/logo-mark.svg` übernimmt seine Farbe direkt aus dem aktiven Theme. Dadurch wird nur ein Logo geladen und es sind keine doppelten Light-/Dark-Dateien nötig.
 
 Design-Tokens stehen in `src/styles/global.css`. Komponenten sollen Tokens verwenden und keine konkurrierenden Farbpaletten einführen.
 
