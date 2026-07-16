@@ -4,6 +4,9 @@ coverage
 playwright-report
 test-results
 assets/images/*.svg
+README.md
+.well-known
+deploy
 404
 agb
 datenschutz
