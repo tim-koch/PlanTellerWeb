@@ -45,6 +45,14 @@ const structuredData = [
   softwareData,
   {
     "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "PlanTeller",
+    url: "https://www.planteller.de/",
+    email: "kochbuch_app@outlook.de",
+    logo: "https://www.planteller.de/favicon.svg",
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqData.map(([name, text]) => ({
       "@type": "Question",

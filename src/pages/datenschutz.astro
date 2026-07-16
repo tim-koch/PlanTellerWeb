@@ -1,0 +1,183 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { SITE } from "../lib/site";
+---
+
+<LegalLayout
+  title="Datenschutzerklärung"
+  description="Datenschutzhinweise für die PlanTeller-Website, das Kontaktformular und die PlanTeller-App."
+  canonicalPath="/datenschutz"
+  updated="16.07.2026"
+>
+  <h2>1. Verantwortlicher</h2>
+  <address class="not-italic">
+    Tim Koch<br />
+    Konrad-Adenauer-Allee 101<br />
+    61118 Bad Vilbel<br />
+    E-Mail: <a href={`mailto:${SITE.publicEmail}`}>{SITE.publicEmail}</a>
+  </address>
+
+  <h2>2. Geltungsbereich</h2>
+  <p>
+    Diese Erklärung informiert über die Verarbeitung personenbezogener Daten bei
+    der Nutzung der Website und der PlanTeller-App, über Zwecke und
+    Rechtsgrundlagen sowie über die Rechte betroffener Personen.
+  </p>
+
+  <h2>3. Website</h2>
+  <h3>3.1 Bereitstellung und Server-Protokolle</h3>
+  <p>
+    Beim Abruf der Website verarbeitet der Hosting-Server technisch
+    erforderliche Verbindungsdaten, insbesondere IP-Adresse, Zeitpunkt,
+    aufgerufene Adresse, übertragene Datenmenge, Referrer, Browser und
+    Betriebssystem. Die Verarbeitung dient der sicheren, stabilen Bereitstellung
+    und Missbrauchsabwehr auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+    Sicherheits- und Fehlerprotokolle werden nur so lange gespeichert, wie dies
+    für diese Zwecke erforderlich ist.
+  </p>
+
+  <h3>3.2 Lokale Darstellungsoptionen</h3>
+  <p>
+    Theme, Kontrast und Bewegungseinstellungen werden ausschließlich im lokalen
+    Speicher des Browsers unter dem Schlüssel <code
+      >planteller-display-settings</code
+    > gespeichert. Die Daten verlassen das Endgerät nicht und können über die Browserdaten
+    gelöscht werden.
+  </p>
+
+  <h3>3.3 Lokal eingebundene Inhalte</h3>
+  <p>
+    Schriften und Icons werden von dieser Website selbst ausgeliefert. Beim
+    Seitenaufruf wird dafür keine Verbindung zu Google Fonts, Iconify oder SVG
+    Repo hergestellt. Wir setzen keine Analyse-, Werbe- oder Trackingdienste
+    ein.
+  </p>
+
+  <h3 id="kontaktformular">3.4 Kontaktformular über Formspree</h3>
+  <p>
+    Bei Nutzung des Kontaktformulars verarbeiten wir Anliegen, E-Mail-Adresse,
+    Nachricht, optional den Namen sowie technische Metadaten zur Bearbeitung und
+    Missbrauchsabwehr. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO bei
+    vorvertraglichen beziehungsweise vertraglichen Anfragen und sonst Art. 6
+    Abs. 1 lit. f DSGVO an einer geordneten Kommunikation.
+  </p>
+  <p>
+    Das Formular wird durch Formspree, Inc. als technischen Dienstleister
+    verarbeitet. Formspree hostet nach eigenen Angaben bei AWS in den USA.
+    Soweit dabei personenbezogene Daten in ein Drittland übermittelt werden,
+    stützt Formspree die Verarbeitung unter anderem auf
+    EU-Standardvertragsklauseln. Das Formular kann technisch nicht genutzt
+    werden, ohne die Daten an Formspree zu übermitteln.
+  </p>
+  <p>
+    Abgeschlossene Anfragen werden grundsätzlich innerhalb von 90 Tagen
+    gelöscht, soweit gesetzliche Aufbewahrungspflichten oder die weitere
+    Bearbeitung nichts anderes erfordern. Bitte übermittle keine Passwörter,
+    Gesundheitsdaten oder andere unnötig sensible Angaben.
+  </p>
+
+  <h2>4. PlanTeller-App</h2>
+  <h3>4.1 Kontodaten</h3>
+  <ul>
+    <li>E-Mail-Adresse und Passwort-Hash</li>
+    <li>optionaler Anzeigename</li>
+    <li>Zeitpunkte wie Registrierung oder letzter Login</li>
+  </ul>
+
+  <h3>4.2 Haushalts- und Inhaltsdaten</h3>
+  <ul>
+    <li>
+      Haushaltsname, Mitgliedschaften, Rollen, Einladungen und Zuordnungen
+    </li>
+    <li>Rezepte, Zutaten, Schritte, Bilder, Kategorien, Tags und Notizen</li>
+    <li>Einkaufslisten, Vorräte sowie Wochen- und Menüplanungsdaten</li>
+    <li>Freitexte für Planungs- oder Importfunktionen</li>
+  </ul>
+
+  <h3>4.3 Geräte-, Nutzungs- und Berechtigungsdaten</h3>
+  <ul>
+    <li>technische Verbindungs-, Sicherheits- und Fehlerdaten</li>
+    <li>Push-Token, wenn Benachrichtigungen aktiviert sind</li>
+    <li>lokale Filter- und Oberflächeneinstellungen</li>
+    <li>
+      Kamera- oder Dateizugriff nur bei aktiver Nutzung entsprechender
+      Funktionen
+    </li>
+  </ul>
+
+  <h2>5. Zwecke und Rechtsgrundlagen der App-Verarbeitung</h2>
+  <ul>
+    <li>
+      Bereitstellung der App und Vertragserfüllung, Art. 6 Abs. 1 lit. b DSGVO
+    </li>
+    <li>
+      Sicherheit, Missbrauchsabwehr und Stabilität, Art. 6 Abs. 1 lit. f DSGVO
+    </li>
+    <li>Erfüllung rechtlicher Pflichten, Art. 6 Abs. 1 lit. c DSGVO</li>
+    <li>
+      optionale einwilligungsbasierte Funktionen, Art. 6 Abs. 1 lit. a DSGVO
+    </li>
+  </ul>
+
+  <h2>6. KI- und automatisierte Verarbeitung</h2>
+  <p>
+    Je nach aktiv genutzter Funktion verarbeitet PlanTeller etwa Rezepttexte,
+    Bilder, Scans, Nutzereingaben und den erforderlichen Kontext für OCR,
+    Strukturierung, Klassifizierung, Menüplanung oder textbasierte Assistenz.
+    Wenn externe KI-Dienste erforderlich sind, können dafür notwendige Inhalte
+    an diese Anbieter übermittelt werden. Näheres erläutern die <a
+      href="/ki-hinweise">KI-Hinweise</a
+    >.
+  </p>
+
+  <h2>7. Empfänger und Drittlandübermittlungen</h2>
+  <p>
+    Erforderliche Daten können an Hosting-, Infrastruktur-, Datenbank-,
+    Speicher-, E-Mail- oder Push-Dienstleister sowie bei aktiv genutzten
+    Funktionen an externe KI-Dienste gehen. Daten werden nicht zu Werbezwecken
+    verkauft. Bei Empfängern außerhalb des EWR werden geeignete Garantien nach
+    der DSGVO, insbesondere Standardvertragsklauseln, eingesetzt, soweit
+    erforderlich.
+  </p>
+
+  <h2>8. Speicherdauer</h2>
+  <ul>
+    <li>
+      Kontodaten bis zur Kontolöschung, danach nur soweit rechtlich oder
+      technisch erforderlich
+    </li>
+    <li>
+      Inhaltsdaten bis zur Löschung oder Auflösung des Kontos beziehungsweise
+      Haushalts
+    </li>
+    <li>Sicherheits- und Fehlerprotokolle zeitlich begrenzt</li>
+    <li>gesetzlich relevante Daten für die jeweiligen Aufbewahrungsfristen</li>
+  </ul>
+
+  <h2>9. Rechte betroffener Personen</h2>
+  <p>
+    Betroffene Personen haben insbesondere Rechte auf Auskunft (Art. 15),
+    Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18),
+    Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO).
+    Einwilligungen können mit Wirkung für die Zukunft widerrufen werden.
+  </p>
+  <p>
+    Anfragen können über <a href="/kontakt?anliegen=datenschutz"
+      >das Datenschutzformular</a
+    > gestellt werden.
+  </p>
+
+  <h2>10. Beschwerderecht</h2>
+  <p>
+    Es besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde,
+    insbesondere am Wohn- oder Sitzort.
+  </p>
+
+  <h2>11. Datensicherheit und Änderungen</h2>
+  <p>
+    Wir setzen angemessene technische und organisatorische Maßnahmen ein,
+    darunter Transportverschlüsselung, Zugriffsbeschränkungen und rollenbasierte
+    Zugriffe, soweit technisch umgesetzt. Diese Erklärung wird aktualisiert,
+    wenn sich Rechtslage, Funktionen oder Datenverarbeitungen ändern.
+  </p>
+</LegalLayout>
