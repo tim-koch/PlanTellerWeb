@@ -1,13 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource-variable/manrope";
-
-@font-face {
-  font-family: "Rosehot";
-  src: url("../assets/fonts/rosehot.woff2") format("woff2");
-  font-display: optional;
-  font-style: normal;
-  font-weight: 400;
-}
 
 @custom-variant dark (&:where([data-resolved-theme="dark"], [data-resolved-theme="dark"] *));
 @custom-variant high-contrast (&:where([data-resolved-contrast="high"], [data-resolved-contrast="high"] *));
@@ -15,8 +6,6 @@
 @theme {
   --font-sans:
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-interface: "Manrope Variable", "Segoe UI", sans-serif;
-  --font-brand: "Rosehot", Georgia, serif;
   --breakpoint-xs: 30rem;
   --breakpoint-sm: 40rem;
   --breakpoint-md: 48rem;
@@ -153,16 +142,6 @@ textarea {
   font-weight: 400;
   letter-spacing: 0.015em;
   line-height: 0.98;
-}
-
-@media (min-width: 48rem) {
-  body {
-    font-family: var(--font-interface);
-  }
-
-  .brand-heading {
-    font-family: var(--font-brand);
-  }
 }
 
 .surface-card {

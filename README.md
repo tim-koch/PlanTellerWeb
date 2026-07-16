@@ -23,7 +23,7 @@ src/lib          Konfiguration und reine Hilfsfunktionen
 src/pages        öffentliche Routen
 src/scripts      gezielte Browserlogik
 src/styles       Design-Tokens und globale Styles
-src/assets       optimierbare Quellbilder, Logos und Fonts
+src/assets       optimierbare Quellbilder und Logos
 public           unverändert auszuliefernde Dateien
 tests            Unit-, Browser-, a11y- und Container-Smoke-Tests
 deploy           Caddy- und Compose-Konfiguration

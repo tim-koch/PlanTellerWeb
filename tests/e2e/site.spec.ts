@@ -13,6 +13,7 @@ const publicRoutes = [
   "/recipe-share?token=test-token",
   "/404",
   "/.well-known/assetlinks.json",
+  "/favicon.svg",
   "/robots.txt",
   "/sitemap.xml",
 ];
@@ -22,6 +23,32 @@ test("alle öffentlichen Routen sind erreichbar", async ({ request }) => {
     const response = await request.get(route);
     expect(response.ok(), `${route} sollte erreichbar sein`).toBeTruthy();
   }
+});
+
+test("Typografie bleibt in allen Viewports identisch", async ({ page }) => {
+  await page.goto("/");
+  const fonts = await page.locator("body").evaluate((body) => ({
+    body: getComputedStyle(body).fontFamily,
+    brand: getComputedStyle(body.querySelector<HTMLElement>(".brand-heading")!)
+      .fontFamily,
+  }));
+
+  expect(fonts.body).not.toMatch(/Manrope|Rosehot/i);
+  expect(fonts.brand).toMatch(/^Georgia/i);
+});
+
+test("Favicon passt sich an helle und dunkle Browser an", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/");
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
+    "href",
+    "/favicon.svg",
+  );
+
+  const favicon = await request.get("/favicon.svg");
+  expect(await favicon.text()).toContain("@media (prefers-color-scheme: dark)");
 });
 
 test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {

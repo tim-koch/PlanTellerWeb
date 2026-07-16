@@ -21,7 +21,6 @@
     "test:lighthouse": "lhci autorun"
   },
   "dependencies": {
-    "@fontsource-variable/manrope": "^5.2.8",
     "@formspree/ajax": "^1.1.5",
     "@iconify-json/solar": "^1.2.5",
     "@iconify/utils": "^3.1.4",
