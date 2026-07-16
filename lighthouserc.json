@@ -5,6 +5,7 @@
       "url": ["http://localhost/", "http://localhost/kontakt.html"],
       "numberOfRuns": 1,
       "settings": {
+        "chromeFlags": "--no-sandbox",
         "throttlingMethod": "devtools"
       }
     },

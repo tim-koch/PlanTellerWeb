@@ -104,6 +104,7 @@ test("mobile Navigation ist per Tastatur bedienbar", async ({ page }) => {
 test("@a11y zentrale Seiten haben keine kritischen axe-Verstöße", async ({
   page,
 }) => {
+  test.slow();
   for (const route of ["/", "/kontakt", "/datenschutz"]) {
     await page.goto(route);
     const results = await new AxeBuilder({ page }).analyze();

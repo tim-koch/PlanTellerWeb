@@ -31,6 +31,5 @@ test-results/
 .env.*
 !.env.example
 
-# Local 404 image variants. Keep the selected production image tracked.
-assets/images/404*.png
-!assets/images/404.png
+# Lokale Reste der abgelösten statischen Website
+/assets/
