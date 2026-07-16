@@ -19,6 +19,7 @@ const { compact = false } = Astro.props;
   >
     <img
       class="absolute inset-0 size-full object-contain dark:hidden"
+      data-logo-theme="light"
       src={logoLight.src}
       alt=""
       width="5225"
@@ -26,6 +27,7 @@ const { compact = false } = Astro.props;
     />
     <img
       class="absolute inset-0 hidden size-full object-contain dark:block"
+      data-logo-theme="dark"
       src={logoDark.src}
       alt=""
       width="5225"

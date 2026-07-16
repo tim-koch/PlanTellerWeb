@@ -26,6 +26,8 @@ test("alle öffentlichen Routen sind erreichbar", async ({ request }) => {
 
 test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {
   await page.goto("/");
+  await expect(page.locator('header [data-logo-theme="light"]')).toBeVisible();
+  await expect(page.locator('header [data-logo-theme="dark"]')).toBeHidden();
   await page
     .getByRole("button", { name: "Anzeige-Einstellungen öffnen" })
     .click();
@@ -34,6 +36,8 @@ test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {
     "data-resolved-theme",
     "dark",
   );
+  await expect(page.locator('header [data-logo-theme="light"]')).toBeHidden();
+  await expect(page.locator('header [data-logo-theme="dark"]')).toBeVisible();
   await expect(page.locator("img.dark\\:block").first()).toBeVisible();
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute(

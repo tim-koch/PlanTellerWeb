@@ -139,11 +139,6 @@ textarea {
   outline-offset: 0.1875rem;
 }
 
-img,
-svg {
-  display: block;
-}
-
 .page-container {
   width: min(100% - 2rem, 75rem);
   margin-inline: auto;
