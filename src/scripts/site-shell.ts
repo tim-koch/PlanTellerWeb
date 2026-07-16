@@ -85,7 +85,7 @@ document
         applySettings(settings);
       });
     });
-  toggle.addEventListener("click", () => setOpen(Boolean(panel.hidden)));
+    toggle.addEventListener("click", () => setOpen(Boolean(panel.hidden)));
     document.addEventListener("click", (event) => {
       if (!widget.contains(event.target as Node)) setOpen(false);
     });

@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<dialog
+  class="m-auto max-h-[92svh] w-[min(92vw,34rem)] overflow-visible rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-3 text-[var(--ink)] shadow-[var(--shadow-float)] backdrop:bg-[var(--overlay)]"
+  data-lightbox
+  aria-labelledby="lightbox-title"
+>
+  <h2 class="sr-only" id="lightbox-title">Vergrößerte App-Ansicht</h2>
+  <button
+    class="absolute -top-4 -right-4 grid size-11 cursor-pointer place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)]"
+    type="button"
+    aria-label="Vergrößerte Ansicht schließen"
+    data-lightbox-close
+  >
+    <Icon name="close-circle-broken" class="size-6" />
+  </button>
+  <img
+    class="max-h-[86svh] w-full rounded-2xl object-contain"
+    src=""
+    alt=""
+    data-lightbox-image
+  />
+</dialog>

@@ -1,11 +1,19 @@
 ---
 import { Image, Picture } from "astro:assets";
 import appHero from "../assets/app/light/hero.png";
+import impression1 from "../assets/app/light/impression-1.png";
+import impression2 from "../assets/app/light/impression-2.png";
+import impression3 from "../assets/app/light/impression-3.png";
+import impression4 from "../assets/app/light/impression-4.png";
+import impression5 from "../assets/app/light/impression-5.png";
+import impression6 from "../assets/app/light/impression-6.png";
 import marketingImage from "../assets/marketing/planteller-app.avif";
 import Button from "../components/Button.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import Icon from "../components/Icon.astro";
+import Lightbox from "../components/Lightbox.astro";
 import SectionHeading from "../components/SectionHeading.astro";
+import ThemePicture from "../components/ThemePicture.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const softwareData = {
@@ -45,6 +53,14 @@ const structuredData = [
     })),
   },
 ];
+const impressions = [
+  [impression1, "PlanTeller Rezeptübersicht"],
+  [impression2, "PlanTeller Rezeptdetails"],
+  [impression3, "PlanTeller Einkaufsliste"],
+  [impression4, "PlanTeller Vorratsverwaltung"],
+  [impression5, "PlanTeller Wochenplanung"],
+  [impression6, "PlanTeller Haushalt und Einstellungen"],
+] as const;
 ---
 
 <BaseLayout
@@ -283,6 +299,42 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section-space" id="impressions">
+      <div class="page-container">
+        <SectionHeading
+          eyebrow="App-Einblicke"
+          title="So fühlt sich Planung ruhig an."
+          intro="Die Oberfläche hält wichtige Aktionen erreichbar und lässt Rezepten, Bildern und deinem Wochenplan den nötigen Raum."
+        />
+        <div
+          class="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6"
+          aria-label="PlanTeller App-Screenshots"
+        >
+          {
+            impressions.map(([image, alt]) => (
+              <button
+                class="group relative w-[78vw] max-w-[20rem] shrink-0 snap-center cursor-zoom-in overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[var(--shadow-soft)] transition hover:-translate-y-1 sm:w-[42vw] lg:w-[24rem]"
+                type="button"
+                aria-label={`${alt} vergrößern`}
+                data-gallery-zoom
+              >
+                <ThemePicture
+                  light={image}
+                  {alt}
+                  widths={[360, 540, 720, 1080]}
+                  sizes="(max-width: 639px) 78vw, (max-width: 1023px) 42vw, 20rem"
+                  class="aspect-[9/20] w-full rounded-[1.5rem] object-cover object-top"
+                />
+                <span class="absolute right-5 bottom-5 grid size-10 place-items-center rounded-full bg-[var(--surface)] text-[var(--brand)] opacity-0 shadow transition group-hover:opacity-100">
+                  <Icon name="maximize-broken" class="size-5" />
+                </span>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     <section class="page-container section-space" id="roadmap">
       <SectionHeading
         eyebrow="Aktive Entwicklung"
@@ -344,15 +396,15 @@ const structuredData = [
           >Beta-Anfrage senden</Button
         >
       </div>
-      <span id="impressions" class="sr-only" aria-hidden="true"></span><span
-        id="legal"
-        class="sr-only"
-        aria-hidden="true"></span>
+      <span id="legal" class="sr-only" aria-hidden="true"></span>
     </section>
   </main>
 
+  <Lightbox />
+
   <script>
     import "../scripts/home-motion";
+    import "../scripts/gallery";
   </script>
 </BaseLayout>
 
