@@ -1,4 +1,29 @@
+# macOS / Windows metadata
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs, caches, and temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+
 # Local 404 image variants. Keep the selected production image tracked.
 assets/images/404*.png
 !assets/images/404.png
-.env

@@ -11,14 +11,14 @@
   <meta property="og:title" content="Hinweise und Disclaimer - PlanTeller">
   <meta property="og:description" content="Hinweise und Disclaimer der PlanTeller-App.">
   <meta property="og:url" content="https://www.planteller.de/hinweise-disclaimer">
-  <meta property="og:image" content="https://www.planteller.de/assets/images/logo.png">
+  <meta property="og:image" content="https://www.planteller.de/assets/images/logo dark.svg">
   <meta property="og:locale" content="de_DE">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hinweise und Disclaimer - PlanTeller">
   <meta name="twitter:description" content="Hinweise und Disclaimer der PlanTeller-App.">
-  <meta name="twitter:image" content="https://www.planteller.de/assets/images/logo.png">
-  <link rel="icon" type="image/png" href="/assets/images/logo.png">
-  <link rel="apple-touch-icon" href="/assets/images/logo.png">
+  <meta name="twitter:image" content="https://www.planteller.de/assets/images/logo dark.svg">
+  <link rel="icon" type="image/png" href="/assets/images/logo dark.svg">
+  <link rel="apple-touch-icon" href="/assets/images/logo dark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
   <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/"><img class="brand-mark" src="/assets/images/logo.png" alt="PlanTeller Logo"><span class="logo">PlanTeller</span></a>
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/images/logo light.svg" data-logo-light="/assets/images/logo light.svg" data-logo-dark="/assets/images/logo dark.svg" alt="PlanTeller Logo"><span class="logo">PlanTeller</span></a>
       <button class="nav-toggle" type="button" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-navigation" data-nav-toggle>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

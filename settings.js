@@ -23,10 +23,24 @@
     root.dataset.theme = settings.theme;
     root.dataset.contrast = settings.contrast;
     root.dataset.motion = settings.motion;
+    updateThemeLogos(settings.theme);
+  }
+
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function updateThemeLogos(theme) {
+    const useDarkLogo = theme === "dark" || (theme === "system" && systemDark.matches);
+    document.querySelectorAll("[data-logo-light][data-logo-dark]").forEach((logo) => {
+      logo.src = useDarkLogo ? logo.dataset.logoDark : logo.dataset.logoLight;
+    });
   }
 
   const settings = readSettings();
   applySettings(settings);
+
+  systemDark.addEventListener("change", () => {
+    if (settings.theme === "system") updateThemeLogos("system");
+  });
 
   function createSettingsWidget() {
     const widget = document.createElement("div");

@@ -7,10 +7,10 @@
 }
 :root {
   color-scheme: light;
-  --bg: #f2ede6;
-  --page-glow: #d2ddca;
-  --surface: #ebe3d7;
-  --surface-strong: #ddcfbb;
+  --bg: #f7f4ed;
+  --page-glow: #dce8d8;
+  --surface: #efe9df;
+  --surface-strong: #e1d7c8;
   --sage: #9fb79a;
   --sage-strong: #6f8e69;
   --ink: #2c2925;
@@ -19,13 +19,13 @@
   --brown: #695545;
   --line: #cfc2b2;
   --inverse-ink: #fff;
-  --header-bg: rgba(242, 237, 230, 0.88);
+  --header-bg: rgba(247, 244, 237, 0.9);
   --card: rgba(255, 255, 255, 0.7);
   --card-soft: rgba(255, 255, 255, 0.55);
   --card-strong: rgba(255, 255, 255, 0.76);
-  --panel-bg: #f8f4ee;
+  --panel-bg: #fbf9f4;
   --phone-screen: #111;
-  --image-bg: #e7ded0;
+  --image-bg: #ebe5db;
   --overlay: rgba(30, 43, 41, 0.72);
   --radius-xl: 26px;
   --radius-lg: 18px;
