@@ -99,18 +99,32 @@ document
 
 const header = document.querySelector<HTMLElement>("[data-site-header]");
 const headerInner = document.querySelector<HTMLElement>("[data-header-inner]");
+let headerUpdateQueued = false;
 const updateHeader = () => {
   const compact = window.scrollY > 20;
   header?.classList.toggle("border-[var(--line)]", compact);
   headerInner?.classList.toggle("!min-h-16", compact);
+  headerUpdateQueued = false;
 };
 updateHeader();
-window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener(
+  "scroll",
+  () => {
+    if (headerUpdateQueued) return;
+    headerUpdateQueued = true;
+    requestAnimationFrame(updateHeader);
+  },
+  { passive: true },
+);
 
 const menuToggle =
   document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
 const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
 if (menuToggle && menu) {
+  const menuFocusables = () => [
+    menuToggle,
+    ...menu.querySelectorAll<HTMLElement>("a, button"),
+  ];
   const setMenuOpen = (open: boolean) => {
     menu.hidden = !open;
     menuToggle.setAttribute("aria-expanded", String(open));
@@ -131,5 +145,24 @@ if (menuToggle && menu) {
       setMenuOpen(false);
       menuToggle.focus();
     }
+    if (event.key !== "Tab" || menu.hidden) return;
+
+    const focusables = menuFocusables();
+    const first = focusables[0];
+    const last = focusables.at(-1);
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (menu.hidden || header?.contains(event.target as Node)) return;
+    setMenuOpen(false);
+  });
+  matchMedia("(min-width: 64rem)").addEventListener("change", (event) => {
+    if (event.matches) setMenuOpen(false);
   });
 }

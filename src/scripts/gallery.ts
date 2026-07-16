@@ -5,6 +5,7 @@ const dialogImage = dialog?.querySelector<HTMLImageElement>(
 const closeButton = dialog?.querySelector<HTMLButtonElement>(
   "[data-lightbox-close]",
 );
+let lastTrigger: HTMLButtonElement | null = null;
 
 document
   .querySelectorAll<HTMLButtonElement>("[data-gallery-zoom]")
@@ -18,6 +19,7 @@ document
             "none",
         ) ?? images[0];
       if (!dialog || !dialogImage || !source) return;
+      lastTrigger = button;
       dialogImage.src = source.currentSrc || source.src;
       dialogImage.alt = source.alt;
       dialog.showModal();
@@ -28,15 +30,25 @@ document
 const closeLightbox = () => {
   if (!dialog?.open) return;
   dialog.close();
+};
+
+const resetLightbox = () => {
   if (dialogImage) {
     dialogImage.src = "";
     dialogImage.alt = "";
   }
+  lastTrigger?.focus();
+  lastTrigger = null;
 };
 
 closeButton?.addEventListener("click", closeLightbox);
 dialog?.addEventListener("click", (event) => {
   if (event.target === dialog) closeLightbox();
 });
+dialog?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeLightbox();
+});
+dialog?.addEventListener("close", resetLightbox);
 
 export {};
