@@ -18,6 +18,13 @@ Desktop.ini
 *.tmp
 *.temp
 .cache/
+.astro/
+dist/
+node_modules/
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
 
 # Local environment configuration
 .env
