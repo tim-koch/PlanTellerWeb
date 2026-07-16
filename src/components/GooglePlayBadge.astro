@@ -1,0 +1,33 @@
+---
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href = "/kontakt?anliegen=beta", class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={["flex flex-wrap items-center gap-x-4 gap-y-3", className]}
+  data-android-availability
+>
+  <a
+    href={href}
+    class="inline-flex rounded-xl transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)] focus-visible:shadow-[var(--shadow-soft)]"
+    aria-label="Für die geschlossene PlanTeller-Beta auf Android bewerben"
+    data-google-play-badge
+  >
+    <img
+      src="/assets/badges/google-play-preregister.png"
+      alt="Vorregistrierung bei Google Play"
+      width="771"
+      height="229"
+      class="h-auto w-44 sm:w-48"
+      decoding="async"
+    />
+  </a>
+  <span class="max-w-44 text-sm leading-snug text-[var(--muted)]">
+    Aktuell ausschließlich für <strong class="text-[var(--ink)]">Android</strong
+    >.
+  </span>
+</div>

@@ -13,6 +13,7 @@ const publicRoutes = [
   "/recipe-share?token=test-token",
   "/404",
   "/.well-known/assetlinks.json",
+  "/assets/badges/google-play-preregister.png",
   "/favicon.svg",
   "/robots.txt",
   "/sitemap.xml",
@@ -52,6 +53,23 @@ test("Favicon verwendet das kontrastreiche PlanTeller-Markenlogo", async ({
   expect(faviconSvg).toContain('viewBox="0 0 5225 5225"');
   expect(faviconSvg).toContain("fill:#314739");
   expect(faviconSvg).toContain("fill:#f8ecda");
+});
+
+test("Google-Play-Badge kennzeichnet die Android-Verfügbarkeit", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const badge = page.locator("[data-google-play-badge]");
+  await expect(badge).toBeVisible();
+  await expect(badge).toHaveAttribute("href", "/kontakt?anliegen=beta");
+  await expect(badge.locator("img")).toHaveAttribute(
+    "alt",
+    "Vorregistrierung bei Google Play",
+  );
+  await expect(page.locator("[data-android-availability]")).toContainText(
+    "Aktuell ausschließlich für Android",
+  );
 });
 
 test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {

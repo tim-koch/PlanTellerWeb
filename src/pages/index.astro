@@ -10,6 +10,7 @@ import impression6 from "../assets/app/light/impression-6.png";
 import marketingImage from "../assets/marketing/planteller-app.avif";
 import Button from "../components/Button.astro";
 import FeatureCard from "../components/FeatureCard.astro";
+import GooglePlayBadge from "../components/GooglePlayBadge.astro";
 import Icon from "../components/Icon.astro";
 import Lightbox from "../components/Lightbox.astro";
 import SectionHeading from "../components/SectionHeading.astro";
@@ -30,7 +31,7 @@ const softwareData = {
 const faqData = [
   [
     "Ist PlanTeller schon verfügbar?",
-    "PlanTeller befindet sich in einer geschlossenen Beta. Über das Formular kannst du dich für einen Testplatz bewerben.",
+    "PlanTeller ist aktuell ausschließlich für Android als geschlossene Beta verfügbar. Über das Formular kannst du dich für einen Testplatz bewerben.",
   ],
   [
     "Was ist Telli?",
@@ -97,7 +98,8 @@ const impressions = [
           Rezepte sammeln, die Woche planen und den Einkauf gemeinsam erledigen
           – ruhig, übersichtlich und an einem Ort.
         </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <GooglePlayBadge class="mt-7" />
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
           <Button href="/kontakt?anliegen=beta" icon="arrow-right-broken"
             >Für die Beta bewerben</Button
           >
