@@ -14,7 +14,7 @@ import Logo from "./Logo.astro";
     class="page-container flex min-h-20 items-center justify-between gap-3 transition-all duration-300"
     data-header-inner
   >
-    <Logo compact />
+    <Logo compact showMark={false} />
     <nav class="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
       {
         mainNavigation.map((item) => (

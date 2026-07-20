@@ -82,7 +82,10 @@ test("Google-Play-Badge kennzeichnet die Android-Verfügbarkeit", async ({
 
 test("Theme, Logo und Einstellung wechseln gemeinsam", async ({ page }) => {
   await page.goto("/");
-  const logo = page.locator('header [data-logo-theme="adaptive"]');
+  const header = page.getByRole("banner");
+  await expect(header.locator(".brand-heading")).toHaveText("PlanTeller");
+  await expect(header.locator('[data-logo-theme="adaptive"]')).toHaveCount(0);
+  const logo = page.locator('footer [data-logo-theme="adaptive"]');
   await expect(logo).toBeVisible();
   await expect(
     page.locator('[data-theme-picture="adaptive"] img').first(),

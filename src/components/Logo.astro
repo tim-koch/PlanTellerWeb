@@ -3,22 +3,34 @@ import logoMark from "../assets/brand/logo-mark.svg";
 
 interface Props {
   compact?: boolean;
+  showMark?: boolean;
 }
 
-const { compact = false } = Astro.props;
+const { compact = false, showMark = true } = Astro.props;
 const logoStyle = `--logo-mark: url("${logoMark.src}")`;
 ---
 
 <a
-  class="group inline-flex items-center gap-2.5 no-underline"
+  class:list={[
+    "group inline-flex items-center no-underline",
+    showMark && "gap-2.5",
+  ]}
   href="/"
   aria-label="PlanTeller Startseite"
 >
-  <span
-    class:list={["logo-mark block shrink-0", compact ? "size-9" : "size-11"]}
-    style={logoStyle}
-    data-logo-theme="adaptive"
-    aria-hidden="true"></span>
+  {
+    showMark && (
+      <span
+        class:list={[
+          "logo-mark block shrink-0",
+          compact ? "size-9" : "size-11",
+        ]}
+        style={logoStyle}
+        data-logo-theme="adaptive"
+        aria-hidden="true"
+      />
+    )
+  }
   <span
     class:list={[
       "brand-heading transition-opacity group-hover:opacity-75",
