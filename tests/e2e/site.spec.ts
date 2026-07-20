@@ -13,9 +13,11 @@ const publicRoutes = [
   "/recipe-share?token=test-token",
   "/404",
   "/.well-known/assetlinks.json",
-  "/favicon.svg",
+  "/favicon.ico",
   "/favicon-32x32.png",
   "/favicon-16x16.png",
+  "/favicon-192x192.png",
+  "/favicon-512x512.png",
   "/apple-touch-icon.png",
   "/robots.txt",
   "/sitemap.xml",
@@ -46,20 +48,18 @@ test("Favicon bleibt klein, kontrastreich und browserkompatibel", async ({
 }) => {
   await page.goto("/");
 
-  const favicon = await request.get("/favicon.svg");
-  const faviconSvg = await favicon.text();
-  expect(faviconSvg).toContain('viewBox="0 0 64 64"');
-  expect(faviconSvg).toContain('fill="#284f3b"');
-  expect(faviconSvg).toContain('fill="#f8ecda"');
-  await expect(
-    page.locator('link[rel="icon"][type="image/svg+xml"]'),
-  ).toHaveAttribute("href", "/favicon.svg?v=2");
+  const favicon = await request.get("/favicon.ico");
+  expect(favicon.headers()["content-type"]).toContain("image/x-icon");
+  await expect(page.locator('link[rel="icon"]').first()).toHaveAttribute(
+    "href",
+    "/favicon.ico?v=3",
+  );
   await expect(page.locator('link[rel="icon"][type="image/png"]')).toHaveCount(
     2,
   );
   await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute(
     "href",
-    "/apple-touch-icon.png?v=2",
+    "/apple-touch-icon.png?v=3",
   );
 });
 

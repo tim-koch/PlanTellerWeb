@@ -129,6 +129,8 @@ Vor einem Release ist genau eine manuelle Testeinsendung zulässig. Anschließen
 
 Die Website unterstützt System, Light, Dark, hohen Kontrast und reduzierte Bewegung. Einstellungen bleiben unter `planteller-display-settings` im Browser gespeichert. Das optimierte Vektorlogo unter `src/assets/brand/logo-mark.svg` übernimmt seine Farbe direkt aus dem aktiven Theme. Dadurch wird nur ein Logo geladen und es sind keine doppelten Light-/Dark-Dateien nötig.
 
+Die Favicon-Quelldatei liegt unter `src/assets/brand/favicon-master.png`. Aus ihr werden die ausgelieferten ICO-, PNG- und Apple-Touch-Varianten in `public` abgeleitet. Das Rastermotiv wird nicht als eingebettetes SVG dupliziert.
+
 Design-Tokens stehen in `src/styles/global.css`. Komponenten sollen Tokens verwenden und keine konkurrierenden Farbpaletten einführen.
 
 ## Deployment
