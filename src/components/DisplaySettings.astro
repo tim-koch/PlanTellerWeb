@@ -1,0 +1,102 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<div class="relative" data-display-settings>
+  <button
+    class="grid size-11 cursor-pointer place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)]/80 transition hover:border-[var(--brand)]"
+    type="button"
+    aria-label="Anzeige-Einstellungen öffnen"
+    aria-expanded="false"
+    aria-controls="display-settings-panel"
+    data-settings-toggle
+  >
+    <Icon name="settings-broken" class="size-5" />
+  </button>
+  <form
+    class="absolute top-[calc(100%+0.75rem)] right-0 z-50 grid w-[min(21rem,calc(100vw-2rem))] gap-4 rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-float)]"
+    id="display-settings-panel"
+    data-settings-panel
+    hidden
+  >
+    <fieldset class="grid gap-2 border-0 p-0">
+      <legend
+        class="mb-1 text-xs font-extrabold tracking-[0.15em] text-[var(--muted)] uppercase"
+        >Darstellung</legend
+      >
+      <div class="grid grid-cols-3 gap-2">
+        <label class="settings-option"
+          ><input type="radio" name="theme" value="system" />System</label
+        >
+        <label class="settings-option"
+          ><input type="radio" name="theme" value="light" />Hell</label
+        >
+        <label class="settings-option"
+          ><input type="radio" name="theme" value="dark" />Dunkel</label
+        >
+      </div>
+    </fieldset>
+    <fieldset class="grid gap-2 border-0 p-0">
+      <legend
+        class="mb-1 text-xs font-extrabold tracking-[0.15em] text-[var(--muted)] uppercase"
+        >Kontrast</legend
+      >
+      <div class="grid grid-cols-3 gap-2">
+        <label class="settings-option"
+          ><input type="radio" name="contrast" value="system" />System</label
+        >
+        <label class="settings-option"
+          ><input
+            type="radio"
+            name="contrast"
+            value="standard"
+          />Standard</label
+        >
+        <label class="settings-option"
+          ><input type="radio" name="contrast" value="high" />Hoch</label
+        >
+      </div>
+    </fieldset>
+    <fieldset class="grid gap-2 border-0 p-0">
+      <legend
+        class="mb-1 text-xs font-extrabold tracking-[0.15em] text-[var(--muted)] uppercase"
+        >Bewegung</legend
+      >
+      <div class="grid grid-cols-2 gap-2">
+        <label class="settings-option"
+          ><input type="radio" name="motion" value="system" />System</label
+        >
+        <label class="settings-option"
+          ><input type="radio" name="motion" value="reduced" />Reduziert</label
+        >
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<style>
+  .settings-option {
+    display: flex;
+    min-height: 2.75rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--surface-muted);
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 750;
+  }
+  .settings-option:has(input:checked) {
+    border-color: var(--brand);
+    background: var(--sage-soft);
+    color: var(--brand-strong);
+  }
+  .settings-option input {
+    width: 0.9rem;
+    height: 0.9rem;
+    accent-color: var(--brand);
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import logoMark from "../assets/brand/logo-mark.svg";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const logoStyle = `--logo-mark: url("${logoMark.src}")`;
+---
+
+<a
+  class="group inline-flex items-center gap-2.5 no-underline"
+  href="/"
+  aria-label="PlanTeller Startseite"
+>
+  <span
+    class:list={["logo-mark block shrink-0", compact ? "size-9" : "size-11"]}
+    style={logoStyle}
+    data-logo-theme="adaptive"
+    aria-hidden="true"></span>
+  <span
+    class:list={[
+      "brand-heading transition-opacity group-hover:opacity-75",
+      compact ? "text-3xl" : "text-4xl",
+    ]}
+  >
+    PlanTeller
+  </span>
+</a>
+
+<style>
+  .logo-mark {
+    background: var(--brand);
+    -webkit-mask: var(--logo-mark) center / contain no-repeat;
+    mask: var(--logo-mark) center / contain no-repeat;
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import { mainNavigation } from "../data/navigation";
+import Button from "./Button.astro";
+import DisplaySettings from "./DisplaySettings.astro";
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-transparent bg-[var(--header)] backdrop-blur-xl transition-all duration-300"
+  data-site-header
+>
+  <div
+    class="page-container flex min-h-20 items-center justify-between gap-3 transition-all duration-300"
+    data-header-inner
+  >
+    <Logo compact />
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
+      {
+        mainNavigation.map((item) => (
+          <a
+            class="rounded-full px-3 py-2 text-sm font-bold no-underline transition hover:bg-[var(--sage-soft)]"
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <Button href="/kontakt?anliegen=beta" class="ml-2 !min-h-10 !px-4"
+        >Beta testen</Button
+      >
+    </nav>
+    <div class="flex items-center gap-2">
+      <DisplaySettings />
+      <button
+        class="grid size-11 cursor-pointer place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)]/80 lg:hidden"
+        type="button"
+        aria-label="Navigation öffnen"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+        data-menu-toggle
+      >
+        <Icon name="hamburger-menu-broken" class="size-6" />
+      </button>
+    </div>
+  </div>
+  <nav
+    class="page-container grid gap-1 border-t border-[var(--line)] py-3 lg:hidden"
+    id="mobile-navigation"
+    aria-label="Mobile Navigation"
+    data-mobile-menu
+    hidden
+  >
+    {
+      mainNavigation.map((item) => (
+        <a
+          class="rounded-2xl px-4 py-3 font-bold no-underline hover:bg-[var(--sage-soft)]"
+          href={item.href}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <Button href="/kontakt?anliegen=beta" class="mt-2"
+      >Für die Beta bewerben</Button
+    >
+  </nav>
+</header>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /recipe-share/
+
+Sitemap: https://www.planteller.de/sitemap.xml

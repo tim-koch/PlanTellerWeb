@@ -1,19 +1,24 @@
 services:
   planteller-web:
-    image: caddy:2.8-alpine
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: planteller-web:local
     container_name: planteller-web
     restart: unless-stopped
     ports:
-    - "127.0.0.1:8081:80"
-
-    environment:
-      - EMAIL=${EMAIL}
-    volumes:
-      - ../:/srv/site:ro
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-
-volumes:
-  caddy_data:
-  caddy_config:
+      - "127.0.0.1:8081:80"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://127.0.0.1/healthz",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s

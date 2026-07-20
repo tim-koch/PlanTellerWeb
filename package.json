@@ -1,0 +1,50 @@
+{
+  "name": "planteller-web",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test --grep @a11y",
+    "test:links": "linkinator dist --recurse --clean-urls --check-fragments --skip '^(mailto:|planteller:|https://www\\.planteller\\.de/)'",
+    "test:lighthouse": "npm run test:lighthouse:mobile && npm run test:lighthouse:desktop",
+    "test:lighthouse:mobile": "lhci autorun --config=lighthouserc.json",
+    "test:lighthouse:desktop": "lhci autorun --config=lighthouserc.desktop.json"
+  },
+  "dependencies": {
+    "@formspree/ajax": "^1.1.5",
+    "@iconify-json/solar": "^1.2.5",
+    "@iconify/utils": "^3.1.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.0",
+    "motion": "^12.42.2",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@axe-core/playwright": "^4.12.1",
+    "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.61.1",
+    "eslint": "^10.7.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "linkinator": "^7.6.1",
+    "prettier": "^3.9.5",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.64.0",
+    "vitest": "^4.1.10"
+  }
+}

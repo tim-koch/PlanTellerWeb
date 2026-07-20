@@ -1,7 +1,9 @@
 :80 {
+  root * /srv/site
   encode zstd gzip
 
-  root * /srv/site
+  @health path /healthz
+  respond @health "ok" 200
 
   redir /index / 301
   redir /index.html / 301
@@ -10,33 +12,33 @@
   redir @html_ext /{re.html.1} 301
 
   @root path /
-  rewrite @root /index
+  rewrite @root /index.html
 
   @recipe_share path /recipe-share/*
-  rewrite @recipe_share /recipe-share
+  rewrite @recipe_share /recipe-share.html
 
   try_files {path} {path}.html
 
-  @html_pages path / /404 /agb /datenschutz /hinweise-disclaimer /impressum /index /ki-hinweise /konto-loeschen /recipe-share /recipe-share/*
-  header @html_pages >Content-Type "text/html; charset=utf-8"
+  @immutable path /_astro/*
+  header @immutable Cache-Control "public, max-age=31536000, immutable"
+
+  @documents not path /_astro/* /assets/* /favicon.svg /.well-known/*
+  header @documents Cache-Control "no-cache, no-store, must-revalidate"
+
+  header {
+    Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; manifest-src 'self'; upgrade-insecure-requests"
+    Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "SAMEORIGIN"
+  }
 
   handle_errors {
     @404 expression `{http.error.status_code} == 404`
-    rewrite @404 /404
-    header @404 >Content-Type "text/html; charset=utf-8"
+    rewrite @404 /404.html
     file_server
   }
 
-  file_server {
-    hide .git
-    hide deploy
-    hide README.md
-  }
-
-  header {
-    X-Content-Type-Options nosniff
-    X-Frame-Options SAMEORIGIN
-    Referrer-Policy strict-origin-when-cross-origin
-    Permissions-Policy camera=(), microphone=(), geolocation=()
-  }
+  file_server
 }

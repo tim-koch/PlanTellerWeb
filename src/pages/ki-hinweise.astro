@@ -1,0 +1,90 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+---
+
+<LegalLayout
+  title="KI-Hinweise und Transparenz"
+  description="Transparente Hinweise zu KI- und Automationsfunktionen in PlanTeller."
+  canonicalPath="/ki-hinweise"
+  updated="16.07.2026"
+>
+  <p>
+    Diese Hinweise erklären, wie bestätigte KI- und Automationsfunktionen in
+    PlanTeller genutzt werden. Telli führt als kleiner Assistent durch die
+    Tutorial-Einführung und befindet sich noch in Ausbildung.
+  </p>
+
+  <h2>1. Welche Funktionen sind betroffen?</h2>
+  <ul>
+    <li>OCR/Texterkennung aus Bildern oder Dokumenten</li>
+    <li>Strukturierung und Normalisierung importierter Rezepte</li>
+    <li>KI-gestützte Vorschläge, etwa bei Menüplanung oder Anleitungen</li>
+    <li>
+      Klassifizierungen, etwa Rezeptkategorien oder mögliche Allergenhinweise
+    </li>
+  </ul>
+
+  <h2>2. Welche Daten können verarbeitet werden?</h2>
+  <p>
+    Bei aktiver Nutzung können importierte Rezepttexte, Nutzereingaben,
+    ausgewählte Bilder oder Scans sowie für den Auftrag erforderliche Metadaten
+    verarbeitet werden.
+  </p>
+
+  <h2>3. Datenfluss</h2>
+  <ol>
+    <li>Du startest eine Funktion in der App.</li>
+    <li>
+      Die erforderlichen Daten werden an das PlanTeller-Backend übermittelt.
+    </li>
+    <li>
+      Falls erforderlich, leitet das Backend relevante Teile an einen externen
+      KI-Dienst weiter.
+    </li>
+    <li>
+      Das Ergebnis erscheint als Vorschlag, Entwurf oder Antwort in der App.
+    </li>
+  </ol>
+
+  <h2>4. Externe KI-Dienste</h2>
+  <p>
+    Je nach Backend-Konfiguration können externe KI-Anbieter eingebunden sein.
+    Es sollen nur für die konkrete Funktion erforderliche Daten übermittelt
+    werden. Eine Verarbeitung außerhalb des EWR ist möglich; Details stehen in
+    der <a href="/datenschutz">Datenschutzerklärung</a>.
+  </p>
+
+  <h2>5. Qualität und Grenzen</h2>
+  <p>
+    KI-Ausgaben können falsch, unvollständig oder unpassend sein, etwa bei
+    Mengen, Zeiten, Einheiten, Arbeitsschritten, Kategorien oder
+    Allergenhinweisen.
+  </p>
+
+  <h2>6. Allergene und Gesundheit</h2>
+  <p>
+    Automatisch abgeleitete Allergenangaben sind unverbindlich. Prüfe
+    Zutatenlisten, Verpackungsangaben und individuelle Unverträglichkeiten.
+    KI-Ausgaben sind keine medizinische Beratung.
+  </p>
+
+  <h2>7. Deine Kontrolle</h2>
+  <p>
+    Du entscheidest, ob du KI-Funktionen nutzt. Prüfe automatisch erzeugte
+    Inhalte vor dem Speichern oder Kochen und korrigiere sie bei Bedarf.
+  </p>
+
+  <h2>8. Speicherung</h2>
+  <p>
+    Übernommene Ergebnisse können im Konto gespeichert werden. Rohdaten und
+    Protokolle werden nur so lange gespeichert, wie es für Betrieb, Sicherheit
+    und Fehlerbehebung erforderlich ist.
+  </p>
+
+  <h2>9. Feedback</h2>
+  <p>
+    Riskante oder fehlerhafte Ausgaben können über <a
+      href="/kontakt?anliegen=fehler">das Fehlerformular</a
+    > gemeldet werden.
+  </p>
+</LegalLayout>

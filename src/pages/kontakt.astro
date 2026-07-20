@@ -1,0 +1,268 @@
+---
+import Button from "../components/Button.astro";
+import Icon from "../components/Icon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../lib/site";
+---
+
+<BaseLayout
+  title="Kontakt und Beta-Anfrage – PlanTeller"
+  description="Bewirb dich für die PlanTeller-Beta oder sende eine Frage, Fehlermeldung, Datenschutz- oder Löschanfrage."
+  canonicalPath="/kontakt"
+>
+  <main class="page-container section-space" id="main-content">
+    <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+      <section>
+        <p
+          class="mb-3 text-xs font-extrabold tracking-[0.18em] text-[var(--brand)] uppercase"
+        >
+          Direkter Draht
+        </p>
+        <h1 class="brand-heading text-balance text-6xl sm:text-7xl">
+          Wobei können wir helfen?
+        </h1>
+        <p class="mt-6 text-lg text-[var(--muted)]">
+          Ob Beta-Anfrage, Feedback oder Datenschutz: Wähle dein Anliegen und
+          wir melden uns persönlich.
+        </p>
+        <div class="mt-8 grid gap-3 text-sm text-[var(--muted)]">
+          <p class="flex items-start gap-3">
+            <Icon
+              name="shield-check-broken"
+              class="mt-0.5 size-5 shrink-0 text-[var(--brand)]"
+            />Deine Angaben werden nur zur Bearbeitung dieser Anfrage verwendet.
+          </p>
+          <p class="flex items-start gap-3">
+            <Icon
+              name="letter-broken"
+              class="mt-0.5 size-5 shrink-0 text-[var(--brand)]"
+            />Im Impressum erreichst du uns weiterhin unter <a
+              class="font-bold text-[var(--brand)] underline"
+              href={`mailto:${SITE.publicEmail}`}>{SITE.publicEmail}</a
+            >.
+          </p>
+        </div>
+        <Button href="/" variant="quiet" class="mt-6">← Zur Startseite</Button>
+      </section>
+
+      <section
+        class="surface-card p-5 sm:p-8"
+        aria-labelledby="contact-form-title"
+      >
+        <h2 class="text-2xl font-extrabold" id="contact-form-title">
+          Nachricht senden
+        </h2>
+        <p class="mt-2 text-sm text-[var(--muted)]">
+          Pflichtfelder sind mit * gekennzeichnet.
+        </p>
+
+        <div
+          class="form-message form-success mt-5"
+          data-fs-success
+          role="status"
+          aria-live="polite"
+        >
+          Danke! Deine Nachricht wurde gesendet. Wir melden uns so bald wie
+          möglich.
+        </div>
+        <div
+          class="form-message form-error mt-5"
+          data-fs-error
+          role="alert"
+          aria-live="assertive"
+        >
+          Die Nachricht konnte nicht gesendet werden. Bitte prüfe deine Angaben
+          und versuche es erneut.
+        </div>
+
+        <form
+          class="mt-7 grid gap-5"
+          id="contact-form"
+          action={SITE.formEndpoint}
+          method="POST"
+          accept-charset="UTF-8"
+        >
+          <div class="form-field">
+            <label for="anliegen">Anliegen *</label>
+            <select id="anliegen" name="anliegen" required data-fs-field>
+              <option value="allgemein">Allgemeine Frage</option>
+              <option value="beta">Für die Beta bewerben</option>
+              <option value="fehler">Fehler melden</option>
+              <option value="datenschutz">Datenschutzanfrage</option>
+              <option value="konto-loeschen">Konto löschen</option>
+            </select>
+            <span class="field-error" data-fs-error="anliegen"
+              >Bitte wähle ein Anliegen.</span
+            >
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="form-field">
+              <label for="name"
+                >Name <span class="font-normal text-[var(--muted)]"
+                  >(optional)</span
+                ></label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                maxlength="100"
+                data-fs-field
+              />
+              <span class="field-error" data-fs-error="name"></span>
+            </div>
+            <div class="form-field">
+              <label for="email">E-Mail-Adresse *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                maxlength="254"
+                required
+                data-fs-field
+              />
+              <span class="field-error" data-fs-error="email"
+                >Bitte gib eine gültige E-Mail-Adresse an.</span
+              >
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Nachricht *</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              minlength="10"
+              maxlength="5000"
+              required
+              data-fs-field
+              aria-describedby="message-help"></textarea>
+            <p class="mt-2 text-xs text-[var(--muted)]" id="message-help">
+              Bitte sende keine Passwörter, Gesundheitsdaten oder andere unnötig
+              sensible Informationen.
+            </p>
+            <span class="field-error" data-fs-error="message"
+              >Die Nachricht muss mindestens 10 Zeichen enthalten.</span
+            >
+          </div>
+
+          <label
+            class="flex cursor-pointer items-start gap-3 rounded-2xl bg-[var(--surface-muted)] p-4 text-sm"
+          >
+            <input
+              class="mt-1 size-4 shrink-0 accent-[var(--brand)]"
+              type="checkbox"
+              name="datenschutz_bestaetigt"
+              value="ja"
+              required
+              data-fs-field
+            />
+            <span
+              >Ich habe die <a
+                class="font-bold text-[var(--brand)] underline"
+                href="/datenschutz#kontaktformular">Datenschutzhinweise</a
+              > zur Kenntnis genommen. Meine Angaben werden über Formspree zur Bearbeitung
+              der Anfrage übermittelt. *</span
+            >
+          </label>
+          <span class="field-error" data-fs-error="datenschutz_bestaetigt"
+            >Bitte bestätige die Datenschutzhinweise.</span
+          >
+
+          <div class="sr-only" aria-hidden="true">
+            <label for="company">Firma</label>
+            <input
+              id="company"
+              name="_gotcha"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+          <input
+            type="hidden"
+            name="subject"
+            value="PlanTeller Website – Allgemeine Frage"
+            data-contact-subject
+          />
+          <input type="hidden" name="quelle" value="/kontakt" />
+
+          <p
+            class="rounded-2xl border border-[var(--line)] p-4 text-xs text-[var(--muted)]"
+          >
+            Formspree verarbeitet und speichert die Formulardaten auf Servern in
+            den USA. Dabei werden Standardvertragsklauseln eingesetzt.
+            Abgeschlossene Anfragen werden grundsätzlich innerhalb von 90 Tagen
+            gelöscht, soweit keine gesetzlichen Gründe entgegenstehen.
+          </p>
+
+          <button
+            class="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-[var(--brand-strong)] bg-[var(--brand-strong)] px-5 py-2.5 text-sm font-extrabold text-[var(--inverse)] transition hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-65"
+            type="submit"
+            data-fs-submit-btn
+          >
+            <Icon name="letter-broken" class="size-5" /> Nachricht senden
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    import "../scripts/contact-form";
+  </script>
+</BaseLayout>
+
+<style>
+  .form-field {
+    display: grid;
+    gap: 0.45rem;
+  }
+  .form-field label {
+    font-size: 0.88rem;
+    font-weight: 800;
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0.8rem 0.95rem;
+  }
+  .form-field textarea {
+    resize: vertical;
+  }
+  [data-fs-field][aria-invalid="true"] {
+    border-color: #b42318;
+  }
+  .field-error {
+    color: #b42318;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  [data-fs-error]:not([data-fs-active]),
+  [data-fs-success]:not([data-fs-active]) {
+    display: none;
+  }
+  .form-message {
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 750;
+  }
+  .form-success {
+    background: var(--sage-soft);
+    color: var(--brand-strong);
+  }
+  .form-error {
+    background: #fee4e2;
+    color: #912018;
+  }
+</style>

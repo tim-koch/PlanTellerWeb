@@ -1,0 +1,59 @@
+---
+import { legalNavigation } from "../data/navigation";
+import { SITE } from "../lib/site";
+import Logo from "./Logo.astro";
+---
+
+<footer
+  class="border-t border-[var(--line)] bg-[var(--surface-muted)]/70 py-12"
+>
+  <div class="page-container grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+    <div>
+      <Logo compact />
+      <p class="mt-4 max-w-sm text-sm text-[var(--muted)]">
+        Rezepte, Wochenplanung und Einkauf in einer ruhigen, gemeinsamen App.
+        Aktuell ausschließlich für Android in geschlossener Beta.
+      </p>
+    </div>
+    <div>
+      <h2 class="mb-3 text-sm font-extrabold tracking-[0.14em] uppercase">
+        Kontakt
+      </h2>
+      <ul class="grid list-none gap-2 p-0 text-sm">
+        <li>
+          <a href="/kontakt" class="hover:text-[var(--brand)]"
+            >Kontaktformular</a
+          >
+        </li>
+        <li>
+          <a
+            href={`mailto:${SITE.publicEmail}`}
+            class="hover:text-[var(--brand)]">{SITE.publicEmail}</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="mb-3 text-sm font-extrabold tracking-[0.14em] uppercase">
+        Rechtliches
+      </h2>
+      <ul class="grid list-none gap-2 p-0 text-sm">
+        {
+          legalNavigation.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-[var(--brand)]">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div
+    class="page-container mt-10 flex flex-col gap-2 border-t border-[var(--line)] pt-6 text-xs text-[var(--muted)] sm:flex-row sm:justify-between"
+  >
+    <span>© {new Date().getFullYear()} PlanTeller · Tim Koch</span>
+    <span>Solar Icons von 480 Design · CC BY 4.0</span>
+  </div>
+</footer>

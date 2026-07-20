@@ -1,0 +1,27 @@
+---
+import { icons } from "@iconify-json/solar";
+import { getIconData, iconToSVG } from "@iconify/utils";
+
+interface Props {
+  name: string;
+  label?: string;
+  class?: string;
+}
+
+const { name, label, class: className } = Astro.props;
+const icon = getIconData(icons, name);
+if (!icon) throw new Error(`Unbekanntes Solar-Icon: ${name}`);
+const rendered = iconToSVG(icon, { height: "1em", width: "1em" });
+---
+
+<svg
+  class={className}
+  viewBox={rendered.attributes.viewBox}
+  width="1em"
+  height="1em"
+  role={label ? "img" : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : "true"}
+  focusable="false"
+  set:html={rendered.body}
+/>

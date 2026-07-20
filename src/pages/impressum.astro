@@ -1,0 +1,36 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { SITE } from "../lib/site";
+---
+
+<LegalLayout
+  title="Impressum"
+  description="Anbieterkennzeichnung und Kontaktinformationen von PlanTeller."
+  canonicalPath="/impressum"
+  updated="16.07.2026"
+>
+  <p><strong>Angaben gemäß § 5 DDG</strong></p>
+
+  <h2>Anbieter</h2>
+  <address class="not-italic">
+    Tim Koch<br />
+    Konrad-Adenauer-Allee 101<br />
+    61118 Bad Vilbel<br />
+    Deutschland
+  </address>
+
+  <h2>Kontakt</h2>
+  <p>
+    E-Mail: <a href={`mailto:${SITE.publicEmail}`}>{SITE.publicEmail}</a><br />
+    Kontaktformular: <a href="/kontakt">www.planteller.de/kontakt</a>
+  </p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>Tim Koch, Anschrift wie oben.</p>
+
+  <h2>Verbraucherstreitbeilegung gemäß § 36 VSBG</h2>
+  <p>
+    Es besteht keine Verpflichtung und keine Bereitschaft zur Teilnahme an einem
+    Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle.
+  </p>
+</LegalLayout>

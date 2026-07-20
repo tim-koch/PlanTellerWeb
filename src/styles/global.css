@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-resolved-theme="dark"], [data-resolved-theme="dark"] *));
+@custom-variant high-contrast (&:where([data-resolved-contrast="high"], [data-resolved-contrast="high"] *));
+
+@theme {
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --breakpoint-xs: 30rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --radius-card: 1.5rem;
+  --radius-panel: 2rem;
+  --shadow-soft: 0 1.5rem 4rem rgb(32 51 39 / 0.12);
+  --shadow-float: 0 1.25rem 3rem rgb(14 29 20 / 0.18);
+}
+
+:root {
+  color-scheme: light;
+  --page: #f7f4ed;
+  --page-glow: #dce8d8;
+  --surface: #fffdf8;
+  --surface-muted: #efe9df;
+  --surface-strong: #e1d7c8;
+  --ink: #243129;
+  --muted: #657069;
+  --brand: #284f3b;
+  --brand-strong: #173c2b;
+  --sage: #a8bea3;
+  --sage-soft: #dbe7d7;
+  --line: #cbd3c9;
+  --inverse: #fffdf8;
+  --header: rgb(247 244 237 / 0.78);
+  --overlay: rgb(11 24 16 / 0.72);
+  --focus: #2f6b4a;
+}
+
+:root[data-resolved-theme="dark"] {
+  color-scheme: dark;
+  --page: #111814;
+  --page-glow: #22362a;
+  --surface: #19231d;
+  --surface-muted: #202d25;
+  --surface-strong: #2b3b31;
+  --ink: #f7f0e3;
+  --muted: #c8c9bf;
+  --brand: #b9d3b1;
+  --brand-strong: #d7e8d2;
+  --sage: #98b694;
+  --sage-soft: #263c2d;
+  --line: #526157;
+  --inverse: #102117;
+  --header: rgb(17 24 20 / 0.78);
+  --overlay: rgb(0 6 2 / 0.82);
+  --focus: #c6e4bd;
+}
+
+:root[data-resolved-contrast="high"] {
+  --page: #fffdf7;
+  --page-glow: #fffdf7;
+  --surface: #ffffff;
+  --surface-muted: #fff8e9;
+  --surface-strong: #ecdfc8;
+  --ink: #131713;
+  --muted: #343b35;
+  --brand: #164b2e;
+  --brand-strong: #07391e;
+  --line: #4e5a51;
+  --focus: #003f20;
+}
+
+:root[data-resolved-theme="dark"][data-resolved-contrast="high"] {
+  --page: #050806;
+  --page-glow: #050806;
+  --surface: #0c120e;
+  --surface-muted: #111a14;
+  --surface-strong: #19251d;
+  --ink: #fffef8;
+  --muted: #f1eadc;
+  --brand: #d4f1cb;
+  --brand-strong: #e5f9df;
+  --line: #d5d8cf;
+  --focus: #e5f9df;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  background: var(--page);
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% -5%, var(--page-glow), transparent 34rem),
+    var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+body::selection {
+  background: var(--sage);
+  color: var(--inverse);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 0.1875rem solid var(--focus);
+  outline-offset: 0.1875rem;
+}
+
+.page-container {
+  width: min(100% - 2rem, 75rem);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+}
+
+.brand-heading {
+  font-family: Baskerville, "Times New Roman", Georgia, serif;
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: 0.015em;
+  line-height: 0.98;
+}
+
+.surface-card {
+  border: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:root[data-resolved-motion="reduced"] *,
+:root[data-resolved-motion="reduced"] *::before,
+:root[data-resolved-motion="reduced"] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

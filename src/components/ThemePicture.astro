@@ -1,0 +1,56 @@
+---
+import { Picture } from "astro:assets";
+
+type ImageSource = (typeof import("../assets/app/light/hero.png"))["default"];
+
+export interface Props {
+  light: ImageSource;
+  dark?: ImageSource;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  priority?: boolean;
+  quality?: number;
+  class?: string;
+  zoomable?: boolean;
+}
+
+const {
+  light,
+  dark = light,
+  alt,
+  widths,
+  sizes,
+  priority = false,
+  quality = 65,
+  class: className,
+} = Astro.props;
+const shared = {
+  widths,
+  sizes,
+  formats: ["avif", "webp"] as ("avif" | "webp")[],
+  fallbackFormat: "webp" as const,
+  quality,
+  loading: priority ? ("eager" as const) : ("lazy" as const),
+  fetchpriority: priority ? ("high" as const) : undefined,
+  decoding: "async" as const,
+};
+const usesSharedSource = dark === light;
+---
+
+{
+  usesSharedSource ? (
+    <span class="block" data-theme-picture="adaptive">
+      <Picture src={light} {alt} {...shared} class={className} />
+    </span>
+  ) : (
+    <>
+      <span class="block dark:hidden" data-theme-picture="light">
+        <Picture src={light} {alt} {...shared} class={className} />
+      </span>
+      <span class="hidden dark:block" data-theme-picture="dark">
+        <Picture src={dark} {alt} {...shared} class={className} />
+      </span>
+    </>
+  )
+}
