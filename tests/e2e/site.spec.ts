@@ -11,6 +11,7 @@ const publicRoutes = [
   "/kontakt",
   "/konto-loeschen",
   "/recipe-share?token=test-token",
+  "/collection-share?token=test-token",
   "/404",
   "/.well-known/assetlinks.json",
   "/favicon.ico",
@@ -151,6 +152,15 @@ test("Rezeptfreigabe erzeugt den unveränderten App-Link", async ({ page }) => {
   await expect(page.locator("[data-open-app]")).toHaveAttribute(
     "href",
     "planteller://recipe-share?token=test-token",
+  );
+});
+
+test("Buchfreigabe erzeugt den passenden App-Link", async ({ page }) => {
+  await page.goto("/collection-share?token=test-token");
+  await expect(page.locator("[data-share-token]")).toHaveText("test-token");
+  await expect(page.locator("[data-open-app]")).toHaveAttribute(
+    "href",
+    "planteller://collection-share?token=test-token",
   );
 });
 

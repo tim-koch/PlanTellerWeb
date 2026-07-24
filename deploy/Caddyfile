@@ -17,6 +17,9 @@
   @recipe_share path /recipe-share/*
   rewrite @recipe_share /recipe-share.html
 
+  @collection_share path /collection-share/*
+  rewrite @collection_share /collection-share.html
+
   try_files {path} {path}.html
 
   @immutable path /_astro/*
