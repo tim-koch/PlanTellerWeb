@@ -12,6 +12,8 @@ const publicRoutes = [
   "/konto-loeschen",
   "/recipe-share?token=test-token",
   "/collection-share?token=test-token",
+  "/invite?token=test-token",
+  "/reset-password?token=123456",
   "/404",
   "/.well-known/assetlinks.json",
   "/favicon.ico",
@@ -164,6 +166,24 @@ test("Buchfreigabe erzeugt den passenden App-Link", async ({ page }) => {
   );
 });
 
+test("Haushaltseinladung erzeugt den passenden App-Link", async ({ page }) => {
+  await page.goto("/invite?token=test-token");
+  await expect(page.locator("[data-share-token]")).toHaveText("test-token");
+  await expect(page.locator("[data-open-app]")).toHaveAttribute(
+    "href",
+    "planteller://invite?token=test-token",
+  );
+});
+
+test("Passwortlink erzeugt den passenden App-Link", async ({ page }) => {
+  await page.goto("/reset-password?token=123456");
+  await expect(page.locator("[data-share-token]")).toHaveText("123456");
+  await expect(page.locator("[data-open-app]")).toHaveAttribute(
+    "href",
+    "planteller://reset-password?token=123456",
+  );
+});
+
 test("mobile Navigation ist per Tastatur bedienbar", async ({ page }) => {
   test.skip(
     (page.viewportSize()?.width ?? 0) >= 1024,
@@ -185,7 +205,13 @@ test("@a11y zentrale Seiten haben keine kritischen axe-Verstöße", async ({
   page,
 }) => {
   test.slow();
-  for (const route of ["/", "/kontakt", "/datenschutz"]) {
+  for (const route of [
+    "/",
+    "/kontakt",
+    "/datenschutz",
+    "/invite?token=test-token",
+    "/reset-password?token=123456",
+  ]) {
     await page.goto(route);
     const results = await new AxeBuilder({ page }).analyze();
     const critical = results.violations.filter(

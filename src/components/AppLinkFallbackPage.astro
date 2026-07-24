@@ -1,0 +1,84 @@
+---
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { AppLinkRoute } from "../lib/app-link";
+
+interface Props {
+  route: AppLinkRoute;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  heading: string;
+  intro: string;
+  codeLabel: string;
+  helpText: string;
+  missingMessage: string;
+  copiedMessage: string;
+  icon: string;
+}
+
+const {
+  route,
+  title,
+  description,
+  canonicalPath,
+  heading,
+  intro,
+  codeLabel,
+  helpText,
+  missingMessage,
+  copiedMessage,
+  icon,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description} {canonicalPath} noindex>
+  <main class="page-container section-space" id="main-content">
+    <section
+      class="surface-card mx-auto max-w-2xl p-6 text-center sm:p-10"
+      data-app-link-route={route}
+      data-missing-message={missingMessage}
+      data-copied-message={copiedMessage}
+    >
+      <Icon name={icon} class="mx-auto size-12 text-[var(--brand)]" />
+      <h1 class="brand-heading mt-4 text-5xl sm:text-6xl">{heading}</h1>
+      <p class="mt-4 text-[var(--muted)]">{intro}</p>
+
+      <div class="mt-7 rounded-2xl bg-[var(--surface-muted)] p-5">
+        <p
+          class="text-xs font-extrabold tracking-[0.15em] text-[var(--muted)] uppercase"
+        >
+          {codeLabel}
+        </p>
+        <p class="mt-2 break-all font-mono text-lg font-bold" data-share-token>
+          Wird geladen …
+        </p>
+      </div>
+
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a
+          class="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--brand-strong)] px-5 font-extrabold text-[var(--inverse)]"
+          data-open-app>In App öffnen</a
+        >
+        <button
+          class="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border border-[var(--line)] px-5 font-extrabold disabled:cursor-not-allowed disabled:opacity-50"
+          type="button"
+          data-copy-token>Code kopieren</button
+        >
+      </div>
+      <p class="mt-5 text-sm text-[var(--muted)]">{helpText}</p>
+      <p
+        class="mt-4 min-h-6 text-sm font-bold text-[var(--brand)] data-[error='true']:text-red-700"
+        role="status"
+        aria-live="polite"
+        data-share-status
+      >
+      </p>
+      <Button href="/" variant="quiet" class="mt-4">← Zur Startseite</Button>
+    </section>
+  </main>
+  <script>
+    import "../scripts/app-link";
+  </script>
+</BaseLayout>

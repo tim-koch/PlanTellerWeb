@@ -78,12 +78,18 @@ Die Start- und Kontaktseite werden getrennt mit mobilen und Desktop-Profilen gep
 /konto-loeschen
 /recipe-share
 /recipe-share/*
+/collection-share
+/collection-share/*
+/invite
+/invite/*
+/reset-password
+/reset-password/*
 /.well-known/assetlinks.json
 /robots.txt
 /sitemap.xml
 ```
 
-Zusätzlich gibt es `/kontakt`. Caddy leitet `/index`, `/index.html` und Aufrufe mit `.html` permanent auf die kanonische URL um. `/recipe-share/<token>` wird intern an die statische Freigabeseite gegeben; das App-Schema bleibt `planteller://recipe-share?token=<token>`.
+Zusätzlich gibt es `/kontakt`. Caddy leitet `/index`, `/index.html` und Aufrufe mit `.html` permanent auf die kanonische URL um. Tokenpfade für Rezept-, Buch-, Einladungs- und Passwortlinks werden intern an ihre statischen Freigabeseiten gegeben; die jeweiligen `planteller://`-App-Schemata bleiben erhalten.
 
 Eine neue Seite wird als `.astro`-Datei in `src/pages` angelegt. Danach Navigation, Sitemap, Tests und gegebenenfalls die Caddy-Smoke-Matrix aktualisieren.
 

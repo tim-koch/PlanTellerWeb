@@ -18,6 +18,8 @@ assert_status 200 /
 assert_status 200 /kontakt
 assert_status 200 /recipe-share/test-token
 assert_status 200 /collection-share/test-token
+assert_status 200 /invite/test-token
+assert_status 200 /reset-password/123456
 assert_status 200 /.well-known/assetlinks.json
 assert_status 301 /index.html
 assert_status 301 /datenschutz.html
@@ -26,3 +28,5 @@ assert_status 404 /diese-seite-existiert-nicht
 curl --silent --show-error "${base_url}/.well-known/assetlinks.json" | diff - public/.well-known/assetlinks.json
 curl --silent --show-error "${base_url}/recipe-share/test-token" | grep -q "planteller://recipe-share"
 curl --silent --show-error "${base_url}/collection-share/test-token" | grep -q "planteller://collection-share"
+curl --silent --show-error "${base_url}/invite/test-token" | grep -q 'data-app-link-route="invite"'
+curl --silent --show-error "${base_url}/reset-password/123456" | grep -q 'data-app-link-route="reset-password"'
